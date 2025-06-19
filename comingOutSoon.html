@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Andrea Aston - Creative Technologist from Malawi specializing in robotics, embedded systems, Graphic Designing and web development.">
+    <meta name="keywords" content="Andrea Aston, Designer, Creative Technologist, Malawi, Robotics, ESP32, Arduino, Web Development">
+    <meta name="author" content="Andrea Aston">
+    <title>Andrea Aston | Creative Technologist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#home" class="logo">Andrea Aston</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/#skills">Skills</a></li>
+                <li><a href="/#resume">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+
+ <!-- COMING OUT SOON CARD -->
+    <div class="coming-soon-container">
+  <div class="coming-soon-card">
+    <div class="construction-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.5 11H19V7a2 2 0 0 0-2-2h-4V3.5a2.5 2.5 0 0 0-5 0V5H4a2 2 0 0 0-2 2v3.8h1.5c1.5 0 2.7 1.2 2.7 2.7 0 1.5-1.2 2.7-2.7 2.7H2V20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-1.8h-1.5c-1.5 0-2.7-1.2-2.7-2.7 0-1.5 1.2-2.7 2.7-2.7z"/>
+      </svg>
+    </div>
+    <h2 class="coming-soon-title">Still compiling</h2>
+    <p class="coming-soon-text">We're working hard to bring you something amazing!</p>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div>
+    <div class="countdown">
+      <span class="days">00</span>d :
+      <span class="hours">00</span>h :
+      <span class="minutes">00</span>m :
+      <span class="seconds">00</span>s
+    </div>
+  </div>
+</div>
+  
+
+   
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+                <div id="thank-you" class="thank-you-message">
+                    <h3>Thank You!</h3>
+                    <p>Your message has been sent. I'll get back to you soon.</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/share/1Bz3NqUBeM/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/+265997721105" target="_blank"><i class="fab fa-whatsapp"></i></a>   
+                    <a href="https://github.com/ANDREAASTON" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/andrea-aston-2888a2286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:bece21-aaston@mubas.ac.mw"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Andrea Aston. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>(function() {emailjs.init("YnNw5AFDMpMk7xBzF"); })();</script>
+
+</body>
+</html>
