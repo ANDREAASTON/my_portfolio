@@ -144,4 +144,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         observer.observe(skillsSection);
     }
+    // Set video playback rate for smart bin video
+    const video = document.getElementById("smartbinVideo");
+    video.playbackRate = 0.5;
+
 });
