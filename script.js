@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Like button logic for all galleries
+    document.querySelectorAll('.gallery, .gallery-grid').forEach(gallery => {
+        gallery.addEventListener('click', function(e) {
+            if (e.target.classList.contains('like-btn') || e.target.closest('.like-btn')) {
+                const btn = e.target.closest('.like-btn');
+                const countSpan = btn.querySelector('.like-count');
+                let count = parseInt(countSpan.textContent, 10) || 0;
+                if (!btn.classList.contains('liked')) {
+                    count++;
+                    btn.classList.add('liked');
+                } else {
+                    count--;
+                    btn.classList.remove('liked');
+                }
+                countSpan.textContent = count;
+            }
+        });
+    });
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
