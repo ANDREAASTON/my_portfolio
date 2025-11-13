@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      emailjs.sendForm("service_lxyb7lz", "template_9gjod4x", contactForm)
+      emailjs.sendForm("service_6nemr0i", "template_9gjod4x", contactForm)
         .then(() => {
           // Show thank you message
           contactForm.style.display = 'none';
@@ -166,5 +166,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set video playback rate for smart bin video
     const video = document.getElementById("smartbinVideo");
     video.playbackRate = 0.5;
+
 
 });
