@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/styles.css">
 <body>
     <!-- Navigation -->
     <nav id="navbar">
@@ -36,22 +36,29 @@
 
   <section class="smartbin-hero">
     <h1>Smart Bin Project</h1>
-    <p>A touchless, sensor-driven waste management system with real-time monitoring and alerts.</p>
+    <p>An innovative, IoT-enabled waste management solution featuring touchless operation, intelligent sensor integration, and real-time monitoring capabilities.</p>
     </section>
         <section class="smartbin-description">
         <h2>Project Overview</h2>
         <p>
-        The smart bin is an automated waste management solution designed to promote hygiene and efficiency.
-        It uses ultrasonic sensors to detect human presence and garbage level, automatically opens the lid
-        when a person is nearby, and provides visual (LEDs) and audio (buzzer) alerts when the bin is full.
-        This reduces physical contact and improves cleanliness in shared spaces.
+        The Smart Bin is a cutting-edge automated waste management system engineered to enhance sanitation practices and operational efficiency in shared environments. This intelligent solution leverages advanced ultrasonic sensor technology to detect human proximity and monitor waste accumulation levels in real-time. Upon detecting a nearby user, the system automatically activates a motorized lid mechanism for touchless operation, significantly reducing cross-contamination risks. When waste capacity reaches maximum threshold levels, the device triggers multi-sensory alerts including LED indicators and auditory notifications to prompt timely waste collection. By eliminating direct contact with the waste container and enabling proactive monitoring, this project demonstrates a practical application of IoT principles in improving hygiene standards and resource management across healthcare facilities, public spaces, and commercial establishments.
         </p>
+        
+        <h3>Key Features</h3>
+        <ul class="smartbin-features">
+            <li><strong>Touchless Operation:</strong> Ultrasonic sensors detect human presence within 20-30cm range, triggering automatic lid activation</li>
+            <li><strong>Waste Level Monitoring:</strong> Real-time capacity detection prevents overflow and optimizes collection schedules</li>
+            <li><strong>Multi-Sensory Alerts:</strong> Integrated LED indicators and auditory buzzers provide clear notifications when the bin reaches full capacity</li>
+            <li><strong>Microcontroller Integration:</strong> ESP32/Arduino-based control system enables reliable operation and potential cloud connectivity</li>
+            <li><strong>Power Efficient Design:</strong> Battery-powered with optimized sensor sampling intervals for extended operational duration</li>
+            <li><strong>Durable Construction:</strong> Weather-resistant casing suitable for both indoor and outdoor deployment</li>
+        </ul>
     </section>
    
     <section class="smartbin-video-section">
     <h2>Project Demo Video</h2>
     <div class="video-container">
-        <video autoplay muted loop playsinline id="smartbinVideo">
+        <video autoplay muted loop id="smartbinVideo">
         <source src="SmartBin/smartBinVedio.mp4" type="video/mp4">
         Your browser does not support the video tag.
         </video>
@@ -109,17 +116,17 @@
                     <p>Your message has been sent. I'll get back to you soon.</p>
                 </div>
                 <div class="social-links">
-                    <a href="https://www.facebook.com/share/1Bz3NqUBeM/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/+265997721105" target="_blank"><i class="fab fa-whatsapp"></i></a>   
-                    <a href="https://www.linkedin.com/in/andrea-aston-2888a2286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:bece21-aaston@mubas.ac.mw"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/share/1Bz3NqUBeM/" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/+265997721105" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>   
+                    <a href="https://www.linkedin.com/in/andrea-aston-2888a2286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:bece21-aaston@mubas.ac.mw" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-top" class="scroll-top">
+    <button id="scroll-top" class="scroll-top" title="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
 
@@ -130,7 +137,8 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script type="module" src="js/app.js"></script>
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>(function() {emailjs.init("YnNw5AFDMpMk7xBzF"); })();</script>
 

@@ -139,7 +139,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function animateSkillBars() {
         skillBars.forEach(bar => {
-            const width = bar.style.width;
+            // Get width from data-width attribute or existing style
+            let width = bar.getAttribute('data-width') || bar.style.width;
             bar.style.width = '0';
             
             setTimeout(() => {
