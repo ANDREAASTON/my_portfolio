@@ -11,20 +11,20 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
-            <a href="myGallery/index.html" class="logo">Andrea Aston</a>
+            <a href="/myGallery/myGallery.html" class="logo">Andrea Aston</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#resume">Resume</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="aboutpage.html">About</a></li>
+                <li><a href="projects/projects.html">Projects</a></li>
+                <li><a href="skillspage.html">Skills</a></li>
+                <li><a href="resumepage.html">Resume</a></li>
+                <li><a href="contactpage.html">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -36,297 +36,19 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container">
+        <div class="hero-image">
+                    <img src="AndreaAston.jpg" alt="Andrea Aston">
+        </div>
+        <div class="hero-text">
             <h1>Andrea Aston</h1>
             <h2>Student Electronics & Computer Engineer</h2>
             <p class="tagline">Building solutions that blend hardware and code</p>
-            <a href="#projects" class="btn">View Projects</a>
+            <a href="/projects/projects.html" class="btn">View Projects</a>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="AndreaAston.jpg" alt="Andrea Aston">
-                </div>
-                <div class="about-text">
-                    <p>I'm a Student Electronics and Computer Engineer at <b>Malawi University of Business and Applied Sciences (MUBAS)</b> with a passion for building innovative solutions that bridge the gap between hardware and software. My work focuses on leveraging technology to address real-world challenges, particularly in the African context.</p>
-                    <p>With expertise in robotics, embedded systems, and web development, I create solutions that are both technically robust and user-friendly. My projects often revolve around sustainability, education technology, and digital empowerment initiatives that can make a tangible difference in local communities.</p>
-                    <p>When I'm not coding or tinkering with hardware, you can find me conducting STEM workshops or creating digital art that explores the intersection of technology and African culture.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="Graphics.jpg" alt="Digital Art">
-                    </div>
-                    <div class="project-content">
-                        <h3>Graphic Designing</h3>
-                        <p>A collection of digital art posters and social media content exploring African technological innovation and cultural themes.</p>
-                        <div class="project-tools">
-                            <span><a href="https://www.adobe.com/products/photoshop.html" target="_blank" rel="noopener">Photoshop</a></span>
-                            <span><a href="https://www.adobe.com/products/illustrator.html" target="_blank" rel="noopener">Illustrator</a></span>
-                            <span><a href="https://en.wikipedia.org/wiki/Graphic_design" target="_blank" rel="noopener">Graphic Design</a></span>
-                        </div>
-                        <a href="graphicDesigning.html" class="btn btn-small">View Details</a>
-                    </div>
-                </div>  
-                
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="smartBin.jpg" alt="Smart Bin">
-                    </div>
-                    <div class="project-content">
-                        <h3>Smart Bin</h3>
-                        <p>The smart bin is an automated waste management system designed to operate without physical contact. </p>
-                        <div class="project-tools">
-                            <span><a href="https://en.wikipedia.org/wiki/Robotics" target="_blank" rel="noopener">Robotics</a></span>
-                            <span><a href="https://en.wikipedia.org/wiki/Smart_bin" target="_blank" rel="noopener">Smart Bin</a></span>
-                            <span><a href="https://en.wikipedia.org/wiki/Sensor" target="_blank" rel="noopener">Sensors</a></span>
-                        </div>
-                        <a href="smartBin.html" class="btn btn-small">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="Robotics Instructor.jpg" alt="STEM Workshops">
-                    </div>
-                    <div class="project-content">
-                        <h3>Arduino STEM Workshops</h3>
-                        <p>Developed and conducted hands-on workshops teaching Arduino programming and robotics fundamentals to high school students.</p>
-                        <div class="project-tools">
-                            <span><a href="https://www.arduino.cc/" target="_blank" rel="noopener">Arduino</a></span>
-                            <span><a href="https://en.wikipedia.org/wiki/Education" target="_blank" rel="noopener">Education</a></span>
-                            <span><a href="https://en.wikipedia.org/wiki/Curriculum" target="_blank" rel="noopener">Curriculum Dev</a></span>
-                        </div>
-                        <a href="comingOutSoon.html" class="btn btn-small">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Project 4 -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="Photography.jpg" alt="Photo & Video Shooting">
-                    </div>
-                    <div class="project-content">
-                        <h3>Photoshooting and VideoShooting</h3>
-                        <p>Covered a variety of events through photography and videography, including a notable book launch at Amaryllis Hotel and activities by a local charity organization.</p>
-                        <div class="project-tools">
-                            <span><a href="https://en.wikipedia.org/wiki/Photography" target="_blank" rel="noopener">Photography</a></span>
-                            <span><a href="https://en.wikipedia.org/wiki/Videography" target="_blank" rel="noopener">VideoShooting</a></span>
-                        </div>
-                        <a href="comingOutSoon.html" class="btn btn-small">View Details</a>
-                    </div>
-                </div>
-
-                <!-- Project 5 -->
-                 <div class="project-card">
-                    <div class="project-img">
-                        <img src="RescueRobot.jpg" alt="Flood Rescue Robot">
-                    </div>
-                    <div class="project-content">
-                        <h3>Flood Rescue Robot</h3>
-                        <p>An autonomous robot equipped with ESP32 and camera to assist in flood rescue operations by locating survivors in dangerous conditions.</p>
-                        <div class="project-tools">
-                            <span><a href="https://www.espressif.com/en/products/socs/esp32" target="_blank" rel="noopener">ESP32</a></span>
-                            <span><a href="https://www.arduino.cc/" target="_blank" rel="noopener">Arduino</a></span>
-                            <span><a href="https://en.wikipedia.org/wiki/Computer_vision" target="_blank" rel="noopener">Computer Vision</a></span>
-                        </div>
-                        <a href="comingOutSoon.html" class="btn btn-small">View Details</a>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>Web Development</h3>
-                    <div class="skill-item">
-                        <span>HTML/CSS</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>JavaScript</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>WordPress</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="75%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Robotics and Embedded systems</h3>
-                    <div class="skill-item">
-                        <span>Microcontroller and Development Boards</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Hardware and Integration</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Communication Interfaces</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Robotics Applications</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Photography</h3>
-                    <div class="skill-item">
-                        <span>Photoshooting</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>VideoShooting</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="65%"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3>Design & Other</h3>
-                    <div class="skill-item">
-                        <span>Adobe Photoshop</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Adobe Illustrator</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Adobe Lightroom Classic</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-width="85%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Resume</h2>
-            <div class="resume-content">
-                <div class="resume-download">
-                    <a href="Aston_Andrea_CV.pdf" class="btn" download>Download Resume (PDF)</a>
-                </div>
-                <div class="timeline">
-                    
-                    <div class="timeline-item">
-                        <div class="timeline-date">2024 - Present</div>
-                        <div class="timeline-content">
-                            <h3>Robotics Instructor & Techinical Personnel @ <a href="https://rflmw.com/">Robotics Foundation Limited</a></h3>
-                            <p>Designed and taught robotics curriculum using Arduino and ESP32 platforms. Led student teams in national competitions.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022 - Present</div>
-                        <div class="timeline-content">
-                            <h3> Self taught Graphic designing & Web development</h3>
-                            <p>I am a self-taught graphic designer for <a href="https://www.facebook.com/share/1ETDzJVc3L/">AC Graphics</a> and web developer, experienced in creating digital artwork, event posters, and user-friendly websites using tools like Photoshop, Canva, HTML, CSS, and WordPress.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2021 - Present</div>
-                        <div class="timeline-content">
-                            <h3> Bsc of Elctronics & Computer Engineering Degree Honours (Pending)</h3>
-                            <p>Still studying electronics and computer engineering at <a href="https://www.mubas.ac.mw/" >Malawi University of Business and applied Sciences</a>. Expected to complete in 2026.</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2020 - 2021</div>
-                        <div class="timeline-content">
-                            <h3>Sales Agent @ Yellow Sollar Malawi</h3>
-                            <p>Specialized  in installing  solar powered lighting systems and TV systems</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- My Gallery Section -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-                <div id="thank-you" class="thank-you-message">
-                    <h3>Thank You!</h3>
-                    <p>Your message has been sent. I'll get back to you soon.</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1Bz3NqUBeM/" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/+265997721105" target="_blank" rel="noopener" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>   
-                    <a href="https://www.linkedin.com/in/andrea-aston-2888a2286?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:bece21-aaston@mubas.ac.mw" title="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    
+   
     <!-- Scroll to Top Button -->
     <button id="scroll-top" class="scroll-top" title="Scroll to top">
         <i class="fas fa-arrow-up"></i>
@@ -340,7 +62,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script type="module" src="js/app.js"></script>
+    <script src="script.js"></script>
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>(function() {emailjs.init("YnNw5AFDMpMk7xBzF"); })();</script>
 
