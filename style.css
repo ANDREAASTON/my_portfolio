@@ -162,6 +162,7 @@ section {
     justify-content: space-between;
     padding: 150px 15%;
     gap: 50px;
+    flex-wrap: wrap;  /* helps with responsiveness */
 }
 
 .hero-text {
@@ -175,6 +176,7 @@ section {
     object-fit: cover;
 }
 
+/* Hero Text */
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 20px;
@@ -200,6 +202,52 @@ section {
 .hero .btn {
     animation: fadeInDown 1s ease 0.6s forwards;
     opacity: 0;
+}
+
+/* ----------------------------------------
+   MOBILE RESPONSIVE FIX
+-----------------------------------------*/
+@media (max-width: 900px) {
+    .hero {
+        padding: 80px 8%;
+        flex-direction: column;       /* stack vertically */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero .tagline {
+        font-size: 1rem;
+    }
+
+    .hero-image img {
+        width: 200px;  /* reduce image size on mobile */
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 60px 5%;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+
+    .hero-image img {
+        width: 160px;
+    }
 }
 
 
