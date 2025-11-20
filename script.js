@@ -171,21 +171,52 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-
-// Fullscreen image viewer for masonry gallery
+// Fullscreen Image Viewer with Swipe Support
+const images = Array.from(document.querySelectorAll(".masonry img"));
 const viewer = document.getElementById("fullscreenViewer");
 const viewerImg = document.getElementById("fullscreenImage");
+let currentIndex = 0;
 
-// Add click event to all masonry images
-document.querySelectorAll(".masonry img").forEach(img => {
+// Open fullscreen
+images.forEach((img, index) => {
   img.addEventListener("click", () => {
-    viewerImg.src = img.src;
+    currentIndex = index;
+    showImage();
     viewer.style.display = "flex";
   });
 });
 
-// Close fullscreen when clicking anywhere
-viewer.addEventListener("click", () => {
-  viewer.style.display = "none";
+// Show current image
+function showImage() {
+  viewerImg.src = images[currentIndex].src;
+}
+
+// Close when clicking background only
+viewer.addEventListener("click", (e) => {
+  if (e.target === viewer) {
+    viewer.style.display = "none";
+  }
 });
 
+// Swipe handling
+let startX = 0;
+
+viewer.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+viewer.addEventListener("touchend", (e) => {
+  let endX = e.changedTouches[0].clientX;
+  let diff = startX - endX;
+
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      // Swipe left → next
+      currentIndex = (currentIndex + 1) % images.length;
+    } else {
+      // Swipe right → previous
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+    }
+    showImage();
+  }
+});
