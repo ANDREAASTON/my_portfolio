@@ -171,3 +171,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+
+// Fullscreen image viewer for masonry gallery
+const viewer = document.getElementById("fullscreenViewer");
+const viewerImg = document.getElementById("fullscreenImage");
+
+// Add click event to all masonry images
+document.querySelectorAll(".masonry img").forEach(img => {
+  img.addEventListener("click", () => {
+    viewerImg.src = img.src;
+    viewer.style.display = "flex";
+  });
+});
+
+// Close fullscreen when clicking anywhere
+viewer.addEventListener("click", () => {
+  viewer.style.display = "none";
+});
+
