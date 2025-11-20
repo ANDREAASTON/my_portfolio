@@ -765,28 +765,33 @@ footer {
 
 
 
-/* Smart Bin Page Styles */
+/* Smart Bin Page and 3D design Styles */
 
-.smartbin-page {
+.smartbin-page, .design3d-page {
   background-color: white;
   color: #006666;
   padding: 2rem;
 }
 
-.smartbin-hero {
+.smartbin-hero, .design3d-hero{
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 0.5rem;
 }
 
-.smartbin-hero h1 {
+.smartbin-hero h1, .design3d-description h1{
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
   color: #006666;
 }
 
-.smartbin-hero p {
+.smartbin-hero p, .design3d-description p, .design3d-hero p{
   font-size: 1.2rem;
   color: #333;
+}
+.design3d-description h3{
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  color: #006666;
 }
 
 .smartbin-video-section {
@@ -814,11 +819,11 @@ footer {
   box-shadow: 0 4px 10px rgba(0, 102, 102, 0.2);
 }
 
-.smartbin-gallery {
+.smartbin-gallery , .design3d-gallery {
   margin-bottom: 3rem;
 }
 
-.smartbin-gallery h2 {
+.smartbin-gallery h2, .design3d-gallery h2{
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
@@ -834,7 +839,7 @@ footer {
   font-size: 1.2rem;
   color: #333;
 }
-.smartbin-description {
+.smartbin-description, .design3d-description {
   max-width: 1000px;
   margin: 0 auto;
   font-size: 1.1rem;
@@ -842,19 +847,19 @@ footer {
   color: #333;
 }
 
-.smartbin-description h2 {
+.smartbin-description h2 , .design3d-description h2{
   text-align: center;
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #006666;
 }
 
-.smartbin-features {
+.smartbin-features, .design3d-features {
   margin-left: 20px;
   line-height: 1.8;
 }
 
-.smartbin-features li {
+.smartbin-features li, .design3d-features li{
   margin-bottom: 1rem;
 }
 /* Coming Soon Component Styles */
