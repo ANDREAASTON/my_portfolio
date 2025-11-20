@@ -204,13 +204,11 @@ section {
     opacity: 0;
 }
 
-/* ----------------------------------------
-   MOBILE RESPONSIVE FIX
------------------------------------------*/
+
 @media (max-width: 900px) {
     .hero {
         padding: 80px 8%;
-        flex-direction: column;       /* stack vertically */
+        flex-direction: column;       
         text-align: center;
         gap: 30px;
     }
