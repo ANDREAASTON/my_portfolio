@@ -220,3 +220,5 @@ viewer.addEventListener("touchend", (e) => {
     showImage();
   }
 });
+
+
