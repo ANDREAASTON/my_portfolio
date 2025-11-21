@@ -484,6 +484,14 @@ section {
     font-weight: 600;
 }
 
+.timeline-card p {
+    color: #555;
+    line-height: 1.6;
+}
+.resume-content a, .project-card a, .about-text a{
+  text-decoration: none;
+}
+
 /* Mobile responsive fix */
 @media (max-width: 768px) {
     .timeline::before {
