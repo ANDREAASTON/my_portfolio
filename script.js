@@ -135,35 +135,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     // Animate skill bars on scroll
-    const skillBars = document.querySelectorAll('.skill-progress');
-    
-    function animateSkillBars() {
-        skillBars.forEach(bar => {
-            // Get width from data-width attribute or existing style
-            let width = bar.getAttribute('data-width') || bar.style.width;
-            bar.style.width = '0';
-            
-            setTimeout(() => {
-                bar.style.width = width;
-            }, 100);
-        });
-    }
-    
-    // Intersection Observer for skill bars animation
-    const skillsSection = document.getElementById('skills');
-    
-    if (skillsSection) {
-        const observer = new IntersectionObserver((entries) => {
+const skillBars = document.querySelectorAll(".skill-progress");
+
+function animateSkillBars() {
+    skillBars.forEach(bar => {
+        const width = bar.getAttribute("data-width");
+
+        // Animate the bar width
+        bar.style.width = width;
+
+        // Animate percentage moving along the bar
+        const percent = bar.querySelector(".skill-percent");
+        if (percent) {
+            percent.textContent = width;      // show percentage text
+            percent.style.opacity = 1;        // fade in
+            percent.style.left = width;       // position at end of fill
+        }
+    });
+}
+
+// Intersection Observer for triggering animation
+const skillsSection = document.getElementById("skills");
+
+if (skillsSection) {
+    const observer = new IntersectionObserver(
+        entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     animateSkillBars();
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
-        
-        observer.observe(skillsSection);
-    }
+        },
+        { threshold: 0.1 }
+    );
+
+    observer.observe(skillsSection);
+}
+
+
     // Set video playback rate for smart bin video
     const video = document.getElementById("smartbinVideo");
     video.playbackRate = 0.5;
