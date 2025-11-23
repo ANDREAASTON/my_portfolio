@@ -908,6 +908,132 @@ footer {
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
+
+/* ===== SEARCH BAR ===== */
+.courses-search {
+    max-width: 500px;
+    margin: 0 auto 40px;
+}
+
+.courses-search input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+    background-color: var(--light-gray);
+}
+
+.courses-search input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0,128,128,0.25);
+    background-color: #fff;
+}
+
+/* ===== COURSES SECTION (unchanged) ===== */
+.courses-section {
+    padding: 80px 0;
+    background-color: var(--white);
+}
+
+.courses-section .section-title {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 50px;
+    color: var(--text-color);
+    position: relative;
+}
+
+.courses-section .section-title::after {
+    content: '';
+    width: 70px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 8px;
+    position: absolute;
+    bottom: -12px;
+    left: 50%; transform: translateX(-50%);
+}
+
+/* CARD GRID */
+.course-category {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* CARD STYLING */
+.category-card {
+    background-color: var(--light-gray);
+    border-radius: 16px;
+    padding: 25px 20px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    transition: var(--transition);
+}
+
+.category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+
+/* TITLE + ICON */
+.category-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* LIST */
+.category-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.category-card ul li {
+    font-size: 0.95rem;
+    padding: 8px 0;
+    color: var(--text-color);
+    border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.category-card ul li:last-child {
+    border-bottom: none;
+}
+
+.highlight-match {
+    background-color: rgba(0, 128, 128, 0.25); /* light teal highlight */
+    color: var(--primary-color);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+/* Add smooth transitions for showing/hiding */
+.category-card {
+    transition: all 0.3s ease;
+}
+
+.category-card[style*="display: none"] {
+    opacity: 0;
+    transform: scale(0.9);
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.category-card:not([style*="display: none"]) {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInDown {
     from {
