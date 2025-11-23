@@ -273,5 +273,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.log("ℹ️ Course search elements not found (this is normal if not on courses page)");
     }
+    
 
 }); // END OF DOMCONTENTLOADED
