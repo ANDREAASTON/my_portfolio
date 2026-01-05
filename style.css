@@ -794,6 +794,14 @@ section {
 }
 
 /* ===== ADMIN GALLERY STYLES ===== */
+
+.masonryadmin {
+    display: flex;
+    flex-wrap: wrap;       /* allow multiple images to wrap to new lines */
+    justify-content: flex-start; /* align images to the left */
+    gap: 10px;             /* spacing between images */
+}
+
 /* =========================
    Inline Delete Button
 ========================= */
