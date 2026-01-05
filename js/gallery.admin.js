@@ -193,12 +193,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // -----------------------------
     // DELETE IMAGE
     // -----------------------------
-    async function deleteImage(fileKey, wrapper) {
+        async function deleteImage(fileKey, wrapper) {
         if (!fileKey || !wrapper) return;
 
-        const existing = wrapper.querySelector(".delete-overlay");
+        // Remove existing overlay if any
+        const existing = document.querySelector(".delete-overlay");
         if (existing) existing.remove();
 
+        // Create overlay and append to body
         const overlay = document.createElement("div");
         overlay.className = "delete-overlay";
         overlay.innerHTML = `
@@ -211,9 +213,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
         `;
-        wrapper.appendChild(overlay);
+        document.body.appendChild(overlay);
 
+        // Cancel button
         overlay.querySelector(".delete-cancel").onclick = () => overlay.remove();
+
+        // Confirm delete
         overlay.querySelector(".delete-confirm").onclick = async () => {
             const { error } = await supabaseClient.storage.from("gallery").remove([fileKey]);
             if (error) {
@@ -225,6 +230,7 @@ document.addEventListener("DOMContentLoaded", () => {
             currentImages = currentImages.filter(img => img.key !== fileKey);
             if (currentIndex >= currentImages.length) currentIndex = 0;
             updateViewer();
+            overlay.remove();
         };
     }
 

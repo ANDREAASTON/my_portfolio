@@ -794,14 +794,9 @@ section {
 }
 
 /* ===== ADMIN GALLERY STYLES ===== */
-/* Image wrapper */
-.admin-image-wrapper {
-    position: relative;
-    margin-bottom: 15px;
-}
-/* Delete Overlay Styling */
+/* Delete Modal Overlay */
 .delete-overlay {
-    position: absolute;
+    position: fixed; /* cover the screen */
     top: 0;
     left: 0;
     width: 100%;
@@ -810,43 +805,46 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10;
+    z-index: 9999;
 }
 
+/* Delete Modal Card */
 .delete-card {
     background: #fff;
-    padding: 15px 20px;
-    border-radius: 8px;
-    max-width: 90%; /* prevents overflowing on small screens */
-    width: 300px;
-    box-sizing: border-box;
+    padding: 20px 25px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 350px;
     text-align: center;
-    word-break: break-word; /* wrap long file names */
+    word-break: break-word;
+    box-sizing: border-box;
 }
 
+/* Heading and filename */
 .delete-card strong {
     display: block;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 8px;
 }
 
 .delete-card small {
     display: block;
     margin-bottom: 15px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: #333;
 }
 
-/* Delete buttons */
+/* Delete buttons container */
 .delete-actions {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
-    flex-wrap: wrap; /* wrap on small screens */
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
+/* Buttons */
 .delete-actions button {
-    flex: 1 1 45%; /* grow/shrink, min 45% width */
+    flex: 1 1 45%; /* width ~45%, shrink/grow */
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -855,6 +853,7 @@ section {
     transition: background 0.3s ease;
 }
 
+/* Button colors */
 .delete-actions .delete-confirm {
     background-color: #d9534f;
     color: #fff;
@@ -873,18 +872,22 @@ section {
     background-color: #5a6268;
 }
 
-/* Responsive adjustments for small screens */
+/* Mobile adjustments */
 @media (max-width: 480px) {
     .delete-card {
         width: 90%;
-        padding: 12px 15px;
+        padding: 15px 20px;
     }
-    .delete-actions {
-        flex-direction: column; /* stack buttons vertically */
-        gap: 8px;
+    .delete-card strong {
+        font-size: 1rem;
+    }
+    .delete-card small {
+        font-size: 0.85rem;
     }
     .delete-actions button {
-        flex: 1 1 100%; /* full width buttons */
+        flex: 1 1 100%; /* stack vertically on tiny screens */
+        font-size: 0.85rem;
+        padding: 10px;
     }
 }
 
