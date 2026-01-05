@@ -876,7 +876,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center; /* center horizontally */
-    gap: 30px; /* space between label and select */
+    gap: 10px; /* space between label and select */
     margin-bottom: 30px; /* space from next element (file input) */
     flex-wrap: wrap; /* wrap on small screens */
 }
@@ -941,7 +941,7 @@ section {
     }
     .admin-hero .input-group {
         flex-direction: column;
-        gap: 50px;
+        gap: 10px;
     }
     .admin-hero select,
     .admin-hero input[type="file"],
