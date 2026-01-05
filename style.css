@@ -794,7 +794,63 @@ section {
 }
 
 /* ===== ADMIN GALLERY STYLES ===== */
-/* Delete Modal Overlay */
+/* =========================
+   Inline Delete Button
+========================= */
+.admin-image-wrapper {
+    display: flex;
+    flex-direction: column; /* stack image and button */
+    align-items: center;    /* center horizontally */
+    margin: 5px;            /* spacing between images */
+}
+
+.admin-gallery-img {
+    display: block;
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Small inline delete button directly below the image */
+.admin-image-wrapper .btn-delete-small {
+    display: block;
+    width: 70px;       /* fixed width */
+    height: 28px;      /* fixed height */
+    font-size: 0.7rem;
+    margin-top: 4px;   /* just below the image */
+    padding: 2px 4px;
+    border-radius: 4px;
+    background-color: #d9534f;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.admin-image-wrapper .btn-delete-small:hover {
+    background-color: #c9302c;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .admin-gallery-img {
+        max-width: 120px;
+    }
+
+    .admin-image-wrapper .btn-delete-small {
+        width: 60px;
+        height: 25px;
+        font-size: 0.65rem;
+        padding: 2px 3px;
+    }
+}
+
+
+/* =========================
+   Delete Modal Overlay
+========================= */
 .delete-overlay {
     position: fixed; /* cover the screen */
     top: 0;
@@ -890,6 +946,7 @@ section {
         padding: 10px;
     }
 }
+
 
 /* ===== ADMIN UPLOAD PANEL STYLES ===== */
 /* Admin Upload Panel Styling */
