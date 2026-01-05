@@ -14,6 +14,64 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentImages = [];
     let currentIndex = 0;
 
+    /* ===============================
+       IMAGE COMPRESSION SETTINGS
+    =============================== */
+    const MAX_FILE_SIZE = 50 * 1024; // ~50 KB
+    const MAX_WIDTH = 1400;
+
+    async function compressImage(file) {
+        return new Promise((resolve) => {
+            const img = new Image();
+            const reader = new FileReader();
+
+            reader.onload = () => img.src = reader.result;
+            reader.readAsDataURL(file);
+
+            img.onload = () => {
+                const canvas = document.createElement("canvas");
+                const ctx = canvas.getContext("2d");
+
+                let width = img.width;
+                let height = img.height;
+
+                if (width > MAX_WIDTH) {
+                    height = height * (MAX_WIDTH / width);
+                    width = MAX_WIDTH;
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+
+                let quality = 0.8;
+                let blob;
+
+                do {
+                    blob = dataURLToBlob(
+                        canvas.toDataURL("image/jpeg", quality)
+                    );
+                    quality -= 0.05;
+                } while (blob.size > MAX_FILE_SIZE && quality > 0.1);
+
+                resolve(
+                    new File([blob], file.name, { type: "image/jpeg" })
+                );
+            };
+        });
+    }
+
+    function dataURLToBlob(dataURL) {
+        const parts = dataURL.split(",");
+        const binary = atob(parts[1]);
+        const array = new Uint8Array(binary.length);
+
+        for (let i = 0; i < binary.length; i++) {
+            array[i] = binary.charCodeAt(i);
+        }
+        return new Blob([array], { type: "image/jpeg" });
+    }
+
     // Create counter if missing
     if (!counter && viewer) {
         counter = document.createElement("div");
@@ -46,7 +104,10 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = '<p style="text-align:center;">Loading images...</p>';
         currentImages = [];
 
-        const { data, error } = await supabaseClient.storage.from("gallery").list(`${project}/`, { limit: 1000 });
+        const { data, error } = await supabaseClient.storage
+            .from("gallery")
+            .list(`${project}/`, { limit: 1000 });
+
         if (error) {
             console.error(error);
             container.innerHTML = '<p style="color:red;">Failed to load images.</p>';
@@ -61,7 +122,10 @@ document.addEventListener("DOMContentLoaded", () => {
         data.forEach((file) => {
             if (!/\.(jpe?g|png|webp)$/i.test(file.name)) return;
 
-            const { data: urlData } = supabaseClient.storage.from("gallery").getPublicUrl(`${project}/${file.name}`);
+            const { data: urlData } = supabaseClient.storage
+                .from("gallery")
+                .getPublicUrl(`${project}/${file.name}`);
+
             if (!urlData?.publicUrl) return;
 
             const publicUrl = urlData.publicUrl;
@@ -81,7 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const delBtn = document.createElement("button");
             delBtn.textContent = "Delete";
             delBtn.className = "btn btn-delete-small";
-            delBtn.onclick = () => deleteImage(currentImages[imgIndex].key, wrapper);
+            delBtn.onclick = () =>
+                deleteImage(currentImages[imgIndex].key, wrapper);
 
             wrapper.appendChild(img);
             wrapper.appendChild(delBtn);
@@ -90,9 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // -----------------------------
-    // UPLOAD IMAGES
+    // UPLOAD IMAGES (WITH COMPRESSION)
     // -----------------------------
-        async function uploadImages() {
+    async function uploadImages() {
         if (!fileInput.files.length) {
             statusDiv.textContent = "❌ Please select files";
             statusDiv.style.color = "red";
@@ -107,30 +172,39 @@ document.addEventListener("DOMContentLoaded", () => {
         statusDiv.textContent = `Uploading 0 of ${total}...`;
 
         for (let i = 0; i < total; i++) {
-            const file = fileInput.files[i];
-            const name = `${project}/${Date.now()}-${file.name}`;
+            const originalFile = fileInput.files[i];
+
             try {
-                const { error } = await supabaseClient.storage.from("gallery").upload(name, file);
+                const compressedFile = await compressImage(originalFile);
+                const name = `${project}/${Date.now()}-${compressedFile.name}`;
+
+                const { error } = await supabaseClient.storage
+                    .from("gallery")
+                    .upload(name, compressedFile);
+
                 if (error) {
                     failed++;
-                    console.error("Upload error:", file.name, error);
+                    console.error("Upload error:", compressedFile.name, error);
                 } else {
                     success++;
                 }
-                statusDiv.textContent = `Uploading ${i + 1} of ${total} (✅ ${success} ❌ ${failed})`;
             } catch (err) {
                 failed++;
-                console.error("Upload exception:", file.name, err);
-                statusDiv.textContent = `Uploading ${i + 1} of ${total} (✅ ${success} ❌ ${failed})`;
+                console.error("Upload exception:", originalFile.name, err);
             }
+
+            statusDiv.textContent =
+                `Uploading ${i + 1} of ${total} (✅ ${success} ❌ ${failed})`;
         }
 
         fileInput.value = "";
-        statusDiv.textContent = `✅ Upload complete! Successful: ${success} | Failed: ${failed}`;
+        statusDiv.textContent =
+            `✅ Upload complete! Successful: ${success} | Failed: ${failed}`;
         statusDiv.style.color = failed > 0 ? "orange" : "#008080";
 
-        // Refresh page after 3 seconds if at least one image was uploaded successfully
-        if (success > 0) setTimeout(() => window.location.reload(), 3000);
+        if (success > 0) {
+            setTimeout(() => window.location.reload(), 3000);
+        }
     }
 
     uploadBtn?.addEventListener("click", uploadImages);
@@ -145,7 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
         viewer.classList.add("active");
         viewer.style.opacity = "1";
         viewer.style.pointerEvents = "auto";
-        document.querySelectorAll(".btn-delete-small").forEach(btn => btn.style.display = "none");
+        document.querySelectorAll(".btn-delete-small")
+            .forEach(btn => btn.style.display = "none");
     }
 
     function closeViewer() {
@@ -153,13 +228,15 @@ document.addEventListener("DOMContentLoaded", () => {
         viewer.classList.remove("active");
         viewer.style.opacity = "0";
         viewer.style.pointerEvents = "none";
-        document.querySelectorAll(".btn-delete-small").forEach(btn => btn.style.display = "");
+        document.querySelectorAll(".btn-delete-small")
+            .forEach(btn => btn.style.display = "");
     }
 
     function updateViewer() {
         if (!viewerImg || !currentImages[currentIndex]) return;
         viewerImg.src = currentImages[currentIndex].url;
-        if (counter) counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        if (counter)
+            counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
     }
 
     function nextImage() {
@@ -167,14 +244,21 @@ document.addEventListener("DOMContentLoaded", () => {
         updateViewer();
     }
     function prevImage() {
-        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+        currentIndex =
+            (currentIndex - 1 + currentImages.length) % currentImages.length;
         updateViewer();
     }
 
-    // FULLSCREEN EVENTS
-    closeBtn?.addEventListener("click", e => { e.stopPropagation(); closeViewer(); });
+    closeBtn?.addEventListener("click", e => {
+        e.stopPropagation();
+        closeViewer();
+    });
+
     viewerImg?.addEventListener("click", e => e.stopPropagation());
-    viewer?.addEventListener("click", e => { if (e.target === viewer) closeViewer(); });
+    viewer?.addEventListener("click", e => {
+        if (e.target === viewer) closeViewer();
+    });
+
     document.addEventListener("keydown", e => {
         if (!viewer?.classList.contains("active")) return;
         if (e.key === "Escape") closeViewer();
@@ -183,7 +267,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     let touchStartX = 0;
-    viewer?.addEventListener("touchstart", e => touchStartX = e.changedTouches[0].screenX);
+    viewer?.addEventListener("touchstart",
+        e => touchStartX = e.changedTouches[0].screenX
+    );
     viewer?.addEventListener("touchend", e => {
         const touchEndX = e.changedTouches[0].screenX;
         if (touchStartX - touchEndX > 50) nextImage();
@@ -193,14 +279,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // -----------------------------
     // DELETE IMAGE
     // -----------------------------
-        async function deleteImage(fileKey, wrapper) {
+    async function deleteImage(fileKey, wrapper) {
         if (!fileKey || !wrapper) return;
 
-        // Remove existing overlay if any
         const existing = document.querySelector(".delete-overlay");
         if (existing) existing.remove();
 
-        // Create overlay and append to body
         const overlay = document.createElement("div");
         overlay.className = "delete-overlay";
         overlay.innerHTML = `
@@ -215,28 +299,31 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         document.body.appendChild(overlay);
 
-        // Cancel button
         overlay.querySelector(".delete-cancel").onclick = () => overlay.remove();
 
-        // Confirm delete
         overlay.querySelector(".delete-confirm").onclick = async () => {
-            const { error } = await supabaseClient.storage.from("gallery").remove([fileKey]);
+            const { error } = await supabaseClient.storage
+                .from("gallery")
+                .remove([fileKey]);
+
             if (error) {
                 console.error(error);
-                overlay.querySelector(".delete-card").textContent = "❌ Failed to delete image";
+                overlay.querySelector(".delete-card").textContent =
+                    "❌ Failed to delete image";
                 return;
             }
+
             wrapper.remove();
-            currentImages = currentImages.filter(img => img.key !== fileKey);
+            currentImages =
+                currentImages.filter(img => img.key !== fileKey);
             if (currentIndex >= currentImages.length) currentIndex = 0;
             updateViewer();
             overlay.remove();
         };
     }
 
-    // -----------------------------
-    // INITIAL LOAD
-    // -----------------------------
-    projectSelect?.addEventListener("change", () => loadAdminGallery(projectSelect.value));
+    projectSelect?.addEventListener("change",
+        () => loadAdminGallery(projectSelect.value)
+    );
     loadAdminGallery(projectSelect.value);
 });

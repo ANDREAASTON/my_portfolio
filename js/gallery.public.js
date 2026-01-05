@@ -41,6 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
+            // 🔑 NEW: show newest images first
+            data.reverse();
+
             container.innerHTML = "";
 
             data.forEach((file) => {
@@ -62,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.style.cursor = "pointer";
                 img.className = "public-gallery-img";
 
-                const index = images.length - 1; // capture correct index
+                const index = images.length - 1;
                 img.addEventListener("click", () => openViewer(index));
 
                 container.appendChild(img);
@@ -103,7 +106,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Events
     closeBtn.addEventListener("click", hideViewer);
-    viewer.addEventListener("click", (e) => { if (e.target === viewer) hideViewer(); });
+    viewer.addEventListener("click", (e) => {
+        if (e.target === viewer) hideViewer();
+    });
 
     document.addEventListener("keydown", (e) => {
         if (!viewer.classList.contains("active")) return;

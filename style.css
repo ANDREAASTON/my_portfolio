@@ -1065,7 +1065,7 @@ section {
 .design3d-page {
     background-color: var(--white);
     color: #006666;
-    padding: 2.5rem 1rem; 
+    padding: 50px; 
     font-family: 'Inter', sans-serif;
 }
 
@@ -1073,13 +1073,13 @@ section {
 .smartbin-hero, 
 .design3d-hero {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
 }
 
 .smartbin-hero h1, 
 .design3d-description h1 {
     font-size: clamp(2rem, 5vw, 2.5rem);
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     color: #006666;
     font-weight: 700;
     line-height: 1.2;
@@ -1092,7 +1092,7 @@ section {
     color: #333;
     line-height: 1.75;
     max-width: 900px;
-    margin: 0 auto 1.8rem;
+    margin: 0 auto 1rem;
 }
 
 .design3d-description h3 {
