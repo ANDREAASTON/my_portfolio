@@ -799,59 +799,93 @@ section {
     position: relative;
     margin-bottom: 15px;
 }
-
-/* Delete confirmation overlay */
+/* Delete Overlay Styling */
 .delete-overlay {
     position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.65);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 10px;
-    box-sizing: border-box;
-    border-radius: 8px;
+    align-items: center;
+    z-index: 10;
 }
 
-/* Confirmation card */
 .delete-card {
-    background: #ffffff;
-    color: #333;
-    padding: 12px;
-    max-width: 90%;
-    width: 280px;
+    background: #fff;
+    padding: 15px 20px;
     border-radius: 8px;
+    max-width: 90%; /* prevents overflowing on small screens */
+    width: 300px;
+    box-sizing: border-box;
     text-align: center;
-    font-size: 14px;
+    word-break: break-word; /* wrap long file names */
 }
 
-/* Button container */
+.delete-card strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.delete-card small {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Delete buttons */
 .delete-actions {
     display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 10px;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap; /* wrap on small screens */
 }
 
-/* Small buttons */
 .delete-actions button {
-    padding: 6px 10px;
-    font-size: 13px;
-    border-radius: 5px;
-    cursor: pointer;
+    flex: 1 1 45%; /* grow/shrink, min 45% width */
+    padding: 10px;
     border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
-/* Confirm */
-.delete-confirm {
-    background: #b00020;
-    color: #ffffff;
+.delete-actions .delete-confirm {
+    background-color: #d9534f;
+    color: #fff;
 }
 
-/* Cancel */
-.delete-cancel {
-    background: #cccccc;
-    color: #333333;
+.delete-actions .delete-confirm:hover {
+    background-color: #c9302c;
+}
+
+.delete-actions .delete-cancel {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.delete-actions .delete-cancel:hover {
+    background-color: #5a6268;
+}
+
+/* Responsive adjustments for small screens */
+@media (max-width: 480px) {
+    .delete-card {
+        width: 90%;
+        padding: 12px 15px;
+    }
+    .delete-actions {
+        flex-direction: column; /* stack buttons vertically */
+        gap: 8px;
+    }
+    .delete-actions button {
+        flex: 1 1 100%; /* full width buttons */
+    }
 }
 
 /* ===== ADMIN UPLOAD PANEL STYLES ===== */
