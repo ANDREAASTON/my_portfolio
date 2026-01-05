@@ -62,21 +62,15 @@
 
             <section class="smartbin-gallery">
                 <h2>Image Gallery</h2>
-                <div class="masonry">
-                    <img src="image1.jpg" alt="Making the model out of cardboard">
-                    <img src="image2.jpg" alt="Mounting RFID module on cardboard">
-                    <img src="image3.jpg" alt="Mounting servo motor on cardboard">
-                    <img src="image4.jpg" alt="Final outcome being spray painted">
-                    <img src="image5.jpg" alt="Final functional smart security entry system">
-                </div>
+                <div class="masonry" id="masonry" data-project="securitySystem"></div>
             </section>
         </div>
 
     <!-- Fullscreen Image Viewer -->
         <div class="fullscreen-viewer" id="fullscreenViewer">
+            <span class="fullscreen-close" id="fullscreenClose">&times;</span>
             <img id="fullscreenImage" src="" alt="">
         </div>
-
         <div class="project-content">   
         <a href="../SmartBin/smartBin.html" class="btn btn-small">&larr; Smartbin Prototype</a>
         </div>
@@ -95,6 +89,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="../../s/supabase.client.js"></script>
+    <script src="../../js/gallery.public.js"></script>
+    <script src="../../js/site.ui.js"></script> <!-- optional -->
+
 </body>
 </html>

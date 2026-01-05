@@ -61,23 +61,13 @@
 
             <section class="smartbin-gallery">
                 <h2>Image Gallery</h2>
-                <div class="masonry">
-                    <img src="image1.jpg" alt="SolidWorks interface designing robot body">
-                    <img src="image2.jpg" alt="Printed models">
-                    <img src="image3.jpg" alt="Trying to fit models together">
-                    <img src="image4.jpg" alt="Dry running testing in pipe">
-                    <img src="image5.jpg" alt="Preparing to start gluing models">
-                    <img src="image6.jpg" alt="Sealing motor pores with sealant">
-                    <img src="image7.jpg" alt="Ensuring sealant coverage">
-                    <img src="image8.jpg" alt="Tightening parts together">
-                    <img src="image9.jpg" alt="Letting glue and sealant dry">
-                    <img src="image10.jpg" alt="Final outcome of internal robot part">
-                </div>
+                <div class="masonry" id="masonry" data-project="WaterBaseflow"></div>
             </section>
         </div>
 
     <!-- Fullscreen Image Viewer -->
         <div class="fullscreen-viewer" id="fullscreenViewer">
+            <span class="fullscreen-close" id="fullscreenClose">&times;</span>
             <img id="fullscreenImage" src="" alt="">
         </div>
         <!--Return Button-->
@@ -98,6 +88,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../../script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="../../js/supabase.client.js"></script>
+<script src="../../js/gallery.public.js"></script>
+<script src="../../js/site.ui.js"></script> <!-- optional -->
+
 </body>
 </html>

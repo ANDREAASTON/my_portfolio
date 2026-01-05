@@ -41,21 +41,14 @@
     <section class="section">
         <div class="container">
             <h2 class="section-title">My Gallery</h2>
-            <div class="masonry"> 
-                <img src="1.jpg" alt="Gallery Image 1">
-                <img src="2.jpg" alt="Gallery Image 2">
-                <img src="3.jpg" alt="Gallery Image 3">
-                <img src="4.jpg" alt="Gallery Image 4">
-                <img src="5.jpg" alt="Gallery Image 5"> 
-                <img src="6.jpg" alt="Gallery Image 6"> 
-            </div>
+            <div class="masonry" id="masonry" data-project="myGallery"></div>
         </div>
     </section>
     <!-- Fullscreen Image Viewer -->
     <div class="fullscreen-viewer" id="fullscreenViewer">
+        <span class="fullscreen-close" id="fullscreenClose">&times;</span>
         <img id="fullscreenImage" src="" alt="">
     </div>
-
     <!-- Scroll to Top Button -->
     <button id="scroll-top" class="scroll-top" title="Scroll to top">
         <i class="fas fa-arrow-up"></i>
@@ -68,7 +61,11 @@
             <p>&copy; 2025 Andrea Aston. All rights reserved.</p>
         </div>
     </footer>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="../js/supabase.client.js"></script>
+    <script src="../js/gallery.public.js"></script>
+    <script src="../js/site.ui.js"></script> <!-- optional -->
 
-    <script src="../script.js"></script>
 </body>
 </html>

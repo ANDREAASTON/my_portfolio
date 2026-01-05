@@ -639,15 +639,24 @@ section {
     text-decoration: none;
 }
 
+/* ===== LOGIN PAGE ===== */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    text-align: center;
+}
+
 /* ===== CONTACT SECTION ===== */
-.contact-container {
+.contact-container, .login-container{
     max-width: 780px;
     margin: 0 auto;
     padding: 10px;
 }
 
 
-.contact-form {
+.contact-form ,.login-page {
     display: grid;
     gap: 22px;
     margin-bottom: 45px;
@@ -718,6 +727,7 @@ section {
 .masonry {
     column-count: 3;
     column-gap: 15px;
+    margin-top: 50px;
 }
 
 .masonry img {
@@ -735,22 +745,115 @@ section {
 
 .fullscreen-viewer {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9);
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 9999;
 }
 
-.fullscreen-viewer img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
+.fullscreen-viewer.active {
+    display: flex;
 }
+
+.fullscreen-viewer img {
+    max-width: 95%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.close-viewer {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+}
+.fullscreen-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.fullscreen-viewer.active ~ * .btn-delete-small {
+    display: none;
+}
+
+.image-counter {
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* ===== ADMIN GALLERY STYLES ===== */
+/* Image wrapper */
+.admin-image-wrapper {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Delete confirmation overlay */
+.delete-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+/* Confirmation card */
+.delete-card {
+    background: #ffffff;
+    color: #333;
+    padding: 12px;
+    max-width: 90%;
+    width: 280px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+/* Button container */
+.delete-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Small buttons */
+.delete-actions button {
+    padding: 6px 10px;
+    font-size: 13px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+/* Confirm */
+.delete-confirm {
+    background: #b00020;
+    color: #ffffff;
+}
+
+/* Cancel */
+.delete-cancel {
+    background: #cccccc;
+    color: #333333;
+}
+
 
 /* ===== PROJECT PAGES ===== */
 .smartbin-page, 

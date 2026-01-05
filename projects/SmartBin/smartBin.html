@@ -72,31 +72,22 @@
 
         <section class="smartbin-gallery">
             <h2>Image Gallery</h2>
-            <div class="masonry">
-                <img src="smartBin1.jpg" alt="Smart Bin 1">
-                <img src="smartBin2.jpg" alt="Smart Bin 2">
-                <img src="smartBin4.jpg" alt="Smart Bin 4">   
-                <img src="smartBin6.jpg" alt="Smart Bin 6"> 
-                <img src="smartBin7.jpg" alt="Smart Bin 7">
-                <img src="smartBin8.jpg" alt="Smart Bin 8"> 
-                <img src="smartBin9.jpg" alt="Smart Bin 9"> 
-                <img src="smartBin10.jpg" alt="Smart Bin 10">   
-                    
-            </div>
+            <div class="masonry" id="masonry" data-project="smartBin"></div>
         </section>
 
         </div>
         <!-- Fullscreen Image Viewer -->
-            <div class="fullscreen-viewer" id="fullscreenViewer">
-                <img id="fullscreenImage" src="" alt="">
-            </div>
-            <div class="project-content">   
+        <div class="fullscreen-viewer" id="fullscreenViewer">
+            <span class="fullscreen-close" id="fullscreenClose">&times;</span>
+            <img id="fullscreenImage" src="" alt="">
+        </div>
+        <div class="project-content">   
             <a href="../securitySytem/securitySystem.html" class="btn btn-small">Security Entry system Prototype &rarr;</a>
-            </div>
+        </div>
             <!-- Scroll to Top Button -->
-            <button id="scroll-top" class="scroll-top" title="Scroll to top">
-                <i class="fas fa-arrow-up"></i>
-            </button>
+        <button id="scroll-top" class="scroll-top" title="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
 
     </main>
 
@@ -108,6 +99,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="../../js/supabase.client.js"></script>
+    <script src="../../js/gallery.public.js"></script>
+    <script src="../../js/site.ui.js"></script> <!-- optional -->
+
 </body>
 </html>

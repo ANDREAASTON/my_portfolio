@@ -68,49 +68,26 @@
 
             <section class="design3d-gallery">
                 <h2>Portifolio Gallery</h2>
-                <div class="masonry">
-                        <img src="design (1).jpg" alt="3D Design Model 1">
-                        <img src="design (2).jpg" alt="3D Design Model 2">
-                        <img src="design (3).jpg" alt="3D Print 1">
-                        <img src="design (4).jpg" alt="3D Print 2">
-                        <img src="design (5).jpg" alt="SolidWorks Preview">
-                        <img src="design (6).jpg" alt="Onshape Project">
-                        <img src="design (1).png" alt="Resin Printing Result">
-                        <img src="design (2).png" alt="Photon Mono 2 Print">
-                        <img src="design (3).png" alt="Finished Prototype">
-                        <img src="design (4).png" alt="3D Assembly Model">
-                        <img src="design (5).png" alt="Mechanical Part Design">
-                        <img src="design (6).png" alt="3D Printed Components">
-                        <img src="design (7).png" alt="CAD Model View">
-                        <img src="design (8).png" alt="Resin Print Close-up">
-                        <img src="design (9).png" alt="3D Design Workflow">
-                        <img src="design (10).png" alt="Printed Part Assembly">
-                        <img src="design (11).png" alt="3D Model Simulation">
-                        <img src="design (12).png" alt="High-Detail Print">
-                        <img src="design (13).png" alt="Engineering Design">
-                        <img src="design (14).png" alt="Prototype Model">
-                        <img src="design (15).png" alt="3D Rendering">
-                        <img src="design (16).png" alt="CAD Design">
-                        <img src="design (17).png" alt="Final Product">
-                </div>
+                <div class="masonry" id="masonry" data-project="3Ddesigning"></div>
             </section>
 
         </div>
             <!-- Fullscreen Image Viewer -->
-            <div class="fullscreen-viewer" id="fullscreenViewer">
-                <img id="fullscreenImage" src="" alt="">
-            </div>
+        <div class="fullscreen-viewer" id="fullscreenViewer">
+            <span class="fullscreen-close" id="fullscreenClose">&times;</span>
+            <img id="fullscreenImage" src="" alt="">
+        </div>
 
             <!--Button-->
-            <div class="project-content">   
-                <a href="../waterBaseflow/waterBaseflow.html" class="btn btn-small">WaterBaseFlow Robot</a>
-            </div>
+        <div class="project-content">   
+            <a href="../waterBaseflow/waterBaseflow.html" class="btn btn-small">WaterBaseFlow Robot</a>
+        </div>
 
 
             <!-- Scroll to Top Button -->
-            <button id="scroll-top" class="scroll-top" title="Scroll to top">
-                <i class="fas fa-arrow-up"></i>
-            </button>
+        <button id="scroll-top" class="scroll-top" title="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
     </main>
     <!-- Footer -->
     <footer>
@@ -120,6 +97,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../../script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="../../js/supabase.client.js"></script>
+<script src="../../js/gallery.public.js"></script>
+<script src="../../js/site.ui.js"></script> <!-- optional -->
+
 </body>
 </html>

@@ -62,23 +62,13 @@
 
             <section class="smartbin-gallery">
                 <h2>Image Gallery</h2>
-                <div class="masonry">
-                    <img src="image (1).jpg" alt="FGC team Robot CAD model">
-                    <img src="image (2).jpg" alt="FGC team robot from old kit">
-                    <img src="image (3).jpg" alt="FGC team robot from old kit2">
-                    <img src="image (4).jpg" alt="Beginning assembly of final FGC robot">
-                    <img src="image (5).jpg" alt="Assembling rope hooking mechanism">
-                    <img src="image (6).jpg" alt="Putting together the frame">
-                    <img src="image (7).jpg" alt="Adding control hub">
-                    <img src="image (8).jpg" alt="Adding battery to power robot">
-                    <img src="image (9).jpg" alt="Overall final design">
-
-                </div>
+                <div class="masonry" id="masonry" data-project="fgc"></div>
             </section>
             
         </div>   
         <!-- Fullscreen Image Viewer -->
         <div class="fullscreen-viewer" id="fullscreenViewer">
+            <span class="fullscreen-close" id="fullscreenClose">&times;</span>
             <img id="fullscreenImage" src="" alt="">
         </div>
 
@@ -95,6 +85,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="../../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="../../js/supabase.client.js"></script>
+    <script src="../../js/gallery.public.js"></script>
+    <script src="../../js/site.ui.js"></script> <!-- optional -->
+
 </body>
 </html>
