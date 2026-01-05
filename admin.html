@@ -38,28 +38,29 @@
     </header>
 
     <main>
-        <section class="design3d-hero">
+        <section class="admin-hero">
             <h1>Admin Upload Panel</h1>
 
-            <label for="projectSelect">Select Project:</label>
-            <select id="projectSelect">
-                <option value="myGallery">myGallery</option>
-                <option value="3Ddesigning">3D Designing</option>
-                <option value="fgc">FGC</option>
-                <option value="graphicDesigning">Graphic Designing</option>
-                <option value="securitySytem">Security Sytem</option>
-                <option value="smartBin">Smart Bin</option>
-                <option value="waterBaseflow">WaterBaseflow</option>
-            </select>
+            <div class="input-group">
+                <label for="projectSelect">Select Project:</label>
+                <select id="projectSelect">
+                    <option value="myGallery">myGallery</option>
+                    <option value="3Ddesigning">3D Designing</option>
+                    <option value="fgc">FGC</option>
+                    <option value="graphicDesigning">Graphic Designing</option>
+                    <option value="securitySytem">Security Sytem</option>
+                    <option value="smartBin">Smart Bin</option>
+                    <option value="waterBaseflow">WaterBaseflow</option>
+                </select>
+            </div>
 
             <input type="file" id="fileInput" multiple accept="image/*">
-            <button id="uploadBtn"  class="btn">Upload</button>
+            <button id="uploadBtn" class="btn">Upload</button>
             <div id="uploadStatus" style="margin-top: 10px;"></div>
         </section>
 
         <section class="design3d-hero">
             <a href="imageviewadmin.html" class="btn">View images</a>
-        
         </section>
 
 
