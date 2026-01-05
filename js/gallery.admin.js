@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // -----------------------------
     // UPLOAD IMAGES
     // -----------------------------
-    async function uploadImages() {
+        async function uploadImages() {
         if (!fileInput.files.length) {
             statusDiv.textContent = "❌ Please select files";
             statusDiv.style.color = "red";
@@ -129,7 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
         statusDiv.textContent = `✅ Upload complete! Successful: ${success} | Failed: ${failed}`;
         statusDiv.style.color = failed > 0 ? "orange" : "#008080";
 
-        if (success > 0) setTimeout(() => loadAdminGallery(project), 2000);
+        // Refresh page after 3 seconds if at least one image was uploaded successfully
+        if (success > 0) setTimeout(() => window.location.reload(), 3000);
     }
 
     uploadBtn?.addEventListener("click", uploadImages);
