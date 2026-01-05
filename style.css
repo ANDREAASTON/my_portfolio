@@ -37,7 +37,12 @@ main {
 }
 
 .section {
-    padding: 150px 0;
+    padding: 120px 0; /* slightly smaller vertical padding for mobile */
+    margin: 0 auto;    /* center section horizontally */
+    max-width: 1200px; /* limit content width for readability */
+    padding-left: 30px;  /* keep some breathing space */
+    padding-right: 30px; /* keep some breathing space */
+    box-sizing: border-box;
 }
 
 .section-title {
@@ -1073,6 +1078,7 @@ main {
 .smartbin-hero, 
 .design3d-hero {
     text-align: center;
+    line-height: 1.5;
     margin-bottom: 0;
 }
 
@@ -1521,7 +1527,7 @@ footer {
 
 @media (max-width: 768px) {
     .section {
-        padding: 80px 0;
+        padding: 100px 20px;;
     }
     
     .section-title {
