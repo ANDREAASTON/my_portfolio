@@ -649,7 +649,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh;
+    min-height: 100vh;
     text-align: center;
 }
 
@@ -971,7 +971,7 @@ main {
 /* Admin Upload Panel Styling */
 .admin-hero {
     max-width: 800px;
-    margin: 150px auto 40px auto; /* space from navbar on top */
+    margin: 120px auto 40px auto; /* space from navbar on top */
     padding: 30px 20px; /* comfortable padding */
     box-sizing: border-box;
     background: #eae5e5;
@@ -1224,7 +1224,7 @@ main {
     width: 80px;
     height: 80px;
     margin: 0 auto 1.5rem;
-    fill: #4b6cb7;
+    fill: #006666;
     animation: hammer 2s ease infinite;
 }
 
@@ -1232,7 +1232,7 @@ main {
     color: #2c3e50;
     font-size: 2rem;
     margin-bottom: 1rem;
-    background: linear-gradient(to right, #4b6cb7, #182848);
+    background: linear-gradient(to right, #4b6cb7, #006666);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -1255,7 +1255,7 @@ main {
 .progress-fill {
     height: 100%;
     width: 65%;
-    background: linear-gradient(90deg, #4b6cb7, #182848);
+    background: linear-gradient(90deg, #4b6cb7, #006666);
     border-radius: 4px;
     animation: progress 2s ease-in-out infinite alternate;
 }
@@ -1265,7 +1265,7 @@ main {
     justify-content: center;
     gap: 0.5rem;
     font-size: 1.2rem;
-    color: #2c3e50;
+    color: #006666;
     margin-top: 1.5rem;
     font-weight: bold;
 }
