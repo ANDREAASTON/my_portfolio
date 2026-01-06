@@ -970,9 +970,9 @@ main {
 /* ===== ADMIN UPLOAD PANEL STYLES ===== */
 /* Admin Upload Panel Styling */
 .admin-hero {
-    max-width: 800px;
+    max-width: 90%;
     margin: 120px auto 40px auto; /* space from navbar on top */
-    padding: 30px 20px; /* comfortable padding */
+    padding: 30px 30px; /* comfortable padding */
     box-sizing: border-box;
     background: #eae5e5;
     border-radius: 8px;
