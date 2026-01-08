@@ -19,6 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         loginStatus.style.color = "#008080";
         loginStatus.textContent = "Login successful! Redirecting...";
-        setTimeout(() => window.location.href = "admin.html", 1000);
+        setTimeout(() => window.location.href = "admin-projects.html", 1000);
     });
 });

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Andrea Aston - Admin Gallery Upload">
+    <meta name="keywords" content="Andrea Aston, Admin, Gallery Management">
+    <meta name="author" content="Andrea Aston">
+    <title>Gallery Upload - Admin</title>
+    <link rel="icon" type="image/png" href="Andrealogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <!-- Navigation -->
+        <nav id="navbar">
+            <div class="container">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="aboutpage.html">About</a></li>
+                    <li><a href="admin-mygallery.html">myGallery</a></li>
+                    <li><a href="admin-projects.html">Projects</a></li>
+                    <li><a href="admin-skills.html">Skills</a></li>
+                    <li><a href="admin-resume.html">Resume</a></li>
+                    <li><a href="contactpage.html">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="admin-hero">
+            <h1>Gallery Upload</h1>
+            <p>
+                <a href="admin-projects.html" class="btn btn-small">← Back to Projects</a>
+            </p>
+
+            <div class="input-group">
+                <label for="projectSelect">Select Project:</label>
+                <select id="projectSelect">
+                    <!-- Dynamically populated from database -->
+                    <option value="">Loading projects...</option>
+                </select>
+            </div>
+
+            <input type="file" id="fileInput" multiple accept="image/*">
+            <button id="uploadBtn" class="btn btn-small">Upload Images</button>
+            <div id="uploadStatus"></div>
+
+            <hr >
+
+            <h2>Uploaded Images</h2>
+            <div id="masonry" class="masonry">
+                <!-- Images will be loaded here by gallery.admin.js -->
+            </div>
+        </section>
+
+        <!-- Fullscreen Viewer -->
+        <div id="fullscreenViewer" class="fullscreen-viewer">
+            <button id="fullscreenClose" class="fullscreen-close">×</button>
+            <img id="fullscreenImage" src="" alt="Fullscreen">
+            <div id="imageCounter"></div>
+        </div>
+
+        <!-- Scroll to Top Button -->
+        <button id="scroll-top" class="scroll-top" title="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Andrea Aston. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="js/supabase.client.js"></script>
+    <script src="js/adminauth.js"></script>
+    <script src="js/projects.admin.js"></script>
+    <script src="js/site.ui.js"></script>
+</body>
+</html>

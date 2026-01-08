@@ -5,13 +5,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!session) {
         // Not logged in → redirect to login
-        window.location.href = "login.html";
+        window.location.href = "loginpage.html";
     } else {
         console.log("✅ Admin authenticated:", session.user.email);
     }
 
     // Optional: listen for auth changes (logout, session expired)
     supabaseClient.auth.onAuthStateChange((_event, _session) => {
-        if (!_session) window.location.href = "login.html";
+        if (!_session) window.location.href = "loginpage.html";
     });
 });

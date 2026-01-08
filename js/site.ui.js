@@ -96,29 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(skillsSection);
     }
 
-    // Video playback speed
-    const video = document.getElementById("smartbinVideo");
-    if (video) video.playbackRate = 0.5;
-
-    // Course search
-    const searchInput = document.getElementById('courseSearchInput');
-    const categoryCards = document.querySelectorAll('.category-card');
-    if (searchInput && categoryCards.length > 0) {
-        searchInput.addEventListener('input', () => {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            categoryCards.forEach(card => {
-                let hasVisible = false;
-                const courseItems = card.querySelectorAll('li');
-                courseItems.forEach(item => {
-                    const text = item.textContent.toLowerCase();
-                    item.style.display = text.includes(searchTerm) ? 'block' : 'none';
-                    if (text.includes(searchTerm)) hasVisible = true;
-                });
-                card.style.display = hasVisible || searchTerm === '' ? 'block' : 'none';
-            });
-        });
-    }
-
     // EmailJS contact form
     const contactForm = document.getElementById('contact-form');
     const thankYouMessage = document.getElementById('thank-you');

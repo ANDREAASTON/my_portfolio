@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Andrea Aston - My about page">
     <meta name="author" content="Andrea Aston">
-    <title>Andrea Aston | Courses Page</title>
+    <title>Manage Courses</title>
     <link rel="icon" type="image/png" href="Andrealogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,13 +18,13 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
-            <a href="myGallery.html" class="logo">Andrea Aston</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="aboutpage.html">About</a></li>
-                <li><a href="project-grid.html">Projects</a></li>
-                <li><a href="public-skills.html">Skills</a></li>
-                <li><a href="public-resume.html">Resume</a></li>
+                <li><a href="admin-mygallery.html">myGallery</a></li>
+                <li><a href="admin-projects.html">Projects</a></li>
+                <li><a href="admin-skills.html">Skills</a></li>
+                <li><a href="admin-resume.html">Resume</a></li>
                 <li><a href="contactpage.html">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -37,16 +37,32 @@
     </header>
 
     <main>
-            <!-- courses section -->
-        <section class="courses-section">
-            <h2 class="section-title">Courses Covered</h2>
+        <section class="admin-hero">
+            <h1>Manage Courses</h1>
 
-            <!-- SEARCH BAR -->
-            <div class="courses-search">
-                <input type="text" id="courseSearchInput" placeholder="Search courses...">
+            <!-- CREATE COURSE -->
+            <form id="createCourseForm" class="contact-container">
+                <div class="form-group">
+                    <label for="courseCategory">Category</label>
+                    <select id="courseCategory" required>
+                        <option value="">Select category</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="courseName">Course Name</label>
+                    <input type="text" id="courseName" placeholder="e.g., Algebra" required>
+                </div>
+
+                <button class="contact-btn" type="submit">Add Course</button>
+                <div id="courseStatus" style="margin-top:10px"></div>
+            </form>
+
+            <!-- EXISTING COURSES -->
+            <div class="contact-container">
+                <h2>Existing Courses</h2>
+                <div id="coursesAdminList"></div>
             </div>
-
-            <div class="course-category" id="coursesContainer"></div>
         </section>
 
     <!-- Scroll to Top Button -->
@@ -65,7 +81,7 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="js/supabase.client.js"></script>
-    <script src="js/courses-public.js"></script>
+    <script src="js/admin-courses.js"></script>
     <script src="js/site.ui.js"></script> <!-- optional -->
 
 </body>

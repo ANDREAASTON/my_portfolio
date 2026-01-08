@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Andrea Aston - My contact page">
+    <meta name="description" content="Andrea Aston - My Resume">
     <meta name="author" content="Andrea Aston">
-    <title>Andrea Aston | Contact Page</title>
+    <title>Andrea Aston | Resume Page</title>
     <link rel="icon" type="image/png" href="Andrealogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
     <header>
+    <!-- Navigation -->
     <nav id="navbar">
         <div class="container">
             <a href="myGallery.html" class="logo">Andrea Aston</a>
@@ -36,38 +36,42 @@
     </nav>
     </header>
 
-
-     <!-- Contact Section -->
     <main>
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <form id="contact-form" class="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    <!-- Resume Section -->
+        <section id="resume" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Resume</h2>
+
+                <div class="resume-content">
+                    <div class="timeline" id="resumeTimeline">
+                        <!-- Resume items will be dynamically loaded here via resume.js -->
+                        <!-- Example timeline-item structure (optional static fallback):
+                        <div class="timeline-item">
+                            <span class="timeline-date">2024 - Present</span>
+                            <div class="timeline-card">
+                                <h3>Robotics Technician & Mentor — Robotics & Embedded Systems</h3>
+                                <p>Building educational and demonstration robots, supporting technical operations, and assisting in teaching robotics concepts.</p>
+                                <ul>
+                                    <li><a href="https://rflmw.com/" target="_blank">RFL Official Website</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        -->
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                    <div class="contact-request" style="margin-top: 20px;">
+                        <p>For complete CV with detailed experience and references, please contact me:</p>
+                        <a href="contactpage.html" class="btn btn-small">Request CV</a>
                     </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="contact-btn">Send Message</button>
-                </form>
-                <div id="thank-you" class="thank-you-message">
-                    <h3>Thank You!</h3>
-                    <p>Your message has been sent. I'll get back to you soon.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
 
     <!-- Scroll to Top Button -->
     <button id="scroll-top" class="scroll-top" title="Scroll to top">
         <i class="fas fa-arrow-up"></i>
     </button>
-
     </main>
 
     <!-- Footer -->
@@ -77,10 +81,10 @@
         </div>
     </footer>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <script src="js/supabase.client.js"></script>
+    <script src="js/public-resume.js "></script>
     <script src="js/site.ui.js"></script> <!-- optional -->
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>(function() {emailjs.init("YnNw5AFDMpMk7xBzF"); })();</script>
 
 </body>
 </html>

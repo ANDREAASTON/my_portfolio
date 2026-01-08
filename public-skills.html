@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Andrea Aston - Student Electronics & Computer Engineer from Malawi specializing in robotics, embedded systems, Graphic Designing and web development.">
-    <meta name="keywords" content="Andrea Aston, Graphics Designer, computer Engineer, Electronics, Malawi, Robotics, ESP32, Arduino, Web Development">
+    <meta name="description" content="Andrea Aston - My skills page">
     <meta name="author" content="Andrea Aston">
-    <title>login page</title>
-    <link rel="icon" type="image/png" href="../../Andrealogo.png">
+    <title>Andrea Aston | Skills Page</title>
+    <link rel="icon" type="image/png" href="Andrealogo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -38,27 +37,20 @@
     </header>
 
     <main>
-        <div class="login-container">
-            <section class="login-page">
-                    <h1>Admin Login</h1>
-                    <div class="form-group">
-                            <input type="email" id="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group">
-                            <input type="password" id="password" placeholder="Password" required>
-                    </div>
-                    <button   class="btn btn-small btn-outline" id="loginBtn">Login</button>
-                    <div id="loginStatus"></div>
-            </section>
+     <!-- Skills Section -->   
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container" id="skillsContainer">
+                <!-- Skills will be dynamically loaded here by public-skills.js -->
+                <p>Loading skills...</p>
+            </div>
         </div>
-
-
-
-            <!-- Scroll to Top Button -->
-            <button id="scroll-top" class="scroll-top" title="Scroll to top">
-                <i class="fas fa-arrow-up"></i>
-            </button>
-
+    </section>
+    <!-- Scroll to Top Button -->
+    <button id="scroll-top" class="scroll-top" title="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     </main>
 
     <!-- Footer -->
@@ -68,10 +60,10 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
     <script src="js/supabase.client.js"></script>
-    <script src="js/authadmin.js"></script>
+    <script src="js/skills.public.js"></script>
+    <script src="js/site.ui.js"></script> <!-- optional -->
 
 </body>
 </html>
