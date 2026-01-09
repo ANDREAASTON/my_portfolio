@@ -91,13 +91,29 @@ document.addEventListener("DOMContentLoaded", async () => {
         const viewerImg = document.getElementById("fullscreenImage");
         const closeBtn = document.getElementById("fullscreenClose");
 
-        // **IMAGE COUNTER ELEMENT**
+        // ----------------------
+        // CREATE/STYLIZE IMAGE COUNTER
+        // ----------------------
         let counter = document.getElementById("imageCounter");
         if (!counter && viewer) {
             counter = document.createElement("div");
             counter.id = "imageCounter";
-            counter.className = "image-counter";  // <-- ADD THIS LINE
+            counter.innerText = `${currentIndex + 1} / ${galleryImages.length}`; // initial count
+
             viewer.appendChild(counter);
+
+            // Style it like the close button
+            counter.style.position = "absolute";
+            counter.style.bottom = "20px";    // stick to bottom
+            counter.style.right = "20px";     // stick to right
+            counter.style.fontSize = "14px";
+            counter.style.fontWeight = "bold";
+            counter.style.color = "white";
+            counter.style.background = "rgba(0,0,0,0.5)";
+            counter.style.padding = "4px 8px";
+            counter.style.borderRadius = "4px";
+            counter.style.zIndex = "1001";
+            counter.style.userSelect = "none"; // prevent selection
         }
 
 
