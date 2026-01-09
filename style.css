@@ -1129,10 +1129,16 @@ hr{
 
 .image-counter {
     position: absolute;
-    bottom: 20px;
+    bottom: 20px;       /* distance from bottom of viewer */
+    right: 20px;        /* distance from right of viewer */
     color: #fff;
     font-size: 14px;
-    opacity: 0.8;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: rgba(0,0,0,0.5);
+    opacity: 1;
+    z-index: 1001;
 }
 
 /* ===== ADMIN GALLERY STYLES ===== */
