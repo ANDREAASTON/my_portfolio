@@ -522,6 +522,22 @@ a:focus-visible {
     }
 }
 
+/* ===============================*/
+  /* PROJECT DESCRIPTION */
+/*================================ */
+#projectDescription ul {
+    padding-left: 1.5rem;
+}
+
+#projectDescription ul ul {
+    padding-left: 1.5rem;
+}
+
+#projectDescription li {
+    margin-bottom: 0.4rem;
+}
+
+
 
 /* ===============================
    PUBLIC PROJECT CARD
