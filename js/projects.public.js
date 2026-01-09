@@ -96,16 +96,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!counter && viewer) {
             counter = document.createElement("div");
             counter.id = "imageCounter";
-            counter.style.position = "absolute";
-            counter.style.bottom = "15px";
-            counter.style.right = "20px";
-            counter.style.color = "white";
-            counter.style.background = "rgba(0,0,0,0.5)";
-            counter.style.padding = "4px 8px";
-            counter.style.borderRadius = "4px";
-            counter.style.fontSize = "14px";
+            counter.className = "image-counter";  // <-- ADD THIS LINE
             viewer.appendChild(counter);
         }
+
 
         let galleryImages = [];
         let currentIndex = 0;
