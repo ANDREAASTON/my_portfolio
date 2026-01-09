@@ -91,31 +91,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         const viewerImg = document.getElementById("fullscreenImage");
         const closeBtn = document.getElementById("fullscreenClose");
 
-        // ----------------------
-        // CREATE/STYLIZE IMAGE COUNTER
-        // ----------------------
+        // **IMAGE COUNTER ELEMENT**
         let counter = document.getElementById("imageCounter");
         if (!counter && viewer) {
             counter = document.createElement("div");
             counter.id = "imageCounter";
-            counter.innerText = `${currentIndex + 1} / ${galleryImages.length}`; // initial count
-
-            viewer.appendChild(counter);
-
-            // Style it like the close button
             counter.style.position = "absolute";
-            counter.style.bottom = "20px";    // stick to bottom
-            counter.style.right = "20px";     // stick to right
-            counter.style.fontSize = "14px";
-            counter.style.fontWeight = "bold";
+            counter.style.bottom = "15px";
+            counter.style.right = "20px";
             counter.style.color = "white";
             counter.style.background = "rgba(0,0,0,0.5)";
             counter.style.padding = "4px 8px";
             counter.style.borderRadius = "4px";
-            counter.style.zIndex = "1001";
-            counter.style.userSelect = "none"; // prevent selection
+            counter.style.fontSize = "14px";
+            viewer.appendChild(counter);
         }
-
 
         let galleryImages = [];
         let currentIndex = 0;
