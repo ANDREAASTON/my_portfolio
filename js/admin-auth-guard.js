@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // -------------------------------
     // Define all admin page URLs
-    // Add any new admin pages here
     // -------------------------------
     const adminPages = [
         "admin-create.html",
@@ -29,10 +28,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     // -------------------------------
     // 1️⃣ Check Supabase session
     // -------------------------------
-    const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
+    const { data: { session } } = await supabaseClient.auth.getSession();
     const isAuthenticated = !!session;
 
-    // If not authenticated, redirect to login immediately
     if (!isAuthenticated) {
         localStorage.removeItem("adminAuth");
         window.location.href = "loginpage.html";
@@ -48,10 +46,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // 3️⃣ Protect admin pages
     // -------------------------------
     if (!adminPages.includes(currentPage)) {
-        // User is on a non-admin page → auto logout
         await supabaseClient.auth.signOut();
         localStorage.removeItem("adminAuth");
-        return; // optional: you can redirect to login
+        window.location.href = "loginpage.html";
+        return;
     }
 
     // -------------------------------
@@ -64,12 +62,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // -------------------------------
-    // 5️⃣ Auto logout on tab close or navigation
+    // 5️⃣ Instant logout on external link clicks
     // -------------------------------
-    window.addEventListener("beforeunload", async (e) => {
-        // Optional: log out automatically when leaving admin pages
-        await supabaseClient.auth.signOut();
-        localStorage.removeItem("adminAuth");
+    document.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", async (e) => {
+            const href = link.getAttribute("href");
+            if (!href) return;
+
+            // Check if link is NOT an admin page
+            const isAdminLink = adminPages.some(p => href.includes(p));
+            if (!isAdminLink) {
+                await supabaseClient.auth.signOut();
+                localStorage.removeItem("adminAuth");
+                // Optional: redirect immediately
+                // window.location.href = href; // let the browser handle navigation
+            }
+        });
     });
 
     // -------------------------------

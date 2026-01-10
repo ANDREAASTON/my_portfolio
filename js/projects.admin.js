@@ -705,13 +705,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {
         logoutBtn.addEventListener("click", async () => {
-            const { error } = await supabaseClient.auth.signOut();
-            if (error) {
-                alert("Logout failed: " + error.message);
-            } else {
-                window.location.href = "loginpage.html"; // redirect to login
-            }
+            await supabaseClient.auth.signOut();      // 1️⃣ End Supabase session
+            localStorage.removeItem("adminAuth");     // 2️⃣ Clear admin flag
+            window.location.href = "loginpage.html";  // 3️⃣ Redirect to login
         });
     }
+
 
 });
