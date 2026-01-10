@@ -699,6 +699,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-
+    // ===============================
+    // LOGOUT BUTTON
+    // ===============================
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", async () => {
+            const { error } = await supabaseClient.auth.signOut();
+            if (error) {
+                alert("Logout failed: " + error.message);
+            } else {
+                window.location.href = "loginpage.html"; // redirect to login
+            }
+        });
+    }
 
 });
