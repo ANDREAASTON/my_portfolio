@@ -64,7 +64,6 @@ main {
   font-size: 2rem;
   text-align: center;
   margin-bottom: 20px;
-  border-bottom: 3px solid #e5e7eb;
 }
 
 .main-doc h2 {
@@ -953,7 +952,6 @@ a:focus-visible {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     text-align: center;
 }
 
@@ -962,13 +960,6 @@ a:focus-visible {
     max-width: 780px;
     margin: 0 auto;
     padding: 10px;
-    margin-top: 30px;
-}
-
-.contact-container ul{
-    margin-bottom: 12px;
-    font-size: 1rem;
-    list-style-type: none;
 }
 
 .contact-container a {
@@ -986,7 +977,6 @@ a:focus-visible {
 .contact-form ,.login-page {
     display: grid;
     gap: 22px;
-    margin-bottom: 45px;
 }
 
 .form-group input,
@@ -1033,22 +1023,62 @@ a:focus-visible {
 }
 
 .contact-btn {
-    padding: 12px 25px;
+    padding: 14px 32px;
     background-color: var(--primary-color);
-    color: #fff;
+    color: #ffffff;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
+
     font-family: 'Inter', sans-serif;
-    transition: var(--transition);
-    width: auto;
-    display: block;
-    margin: 0 auto; 
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+
+    box-shadow: 0 8px 18px rgba(0, 128, 128, 0.25);
+    transition: 
+        background-color 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease;
 }
 
+/* Hover (desktop) */
 .contact-btn:hover {
-    background-color: #006b6b; 
+    background-color: #006b6b;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 128, 128, 0.35);
 }
+
+/* Active (click feedback) */
+.contact-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 6px 14px rgba(0, 128, 128, 0.25);
+}
+
+/* Keyboard accessibility */
+.contact-btn:focus-visible {
+    outline: none;
+    box-shadow: 
+        0 0 0 3px rgba(0, 128, 128, 0.35),
+        0 8px 18px rgba(0, 128, 128, 0.25);
+}
+
+/* Mobile touch refinement */
+@media (max-width: 480px) {
+    .contact-btn {
+        width: 100%;
+        max-width: 320px;
+        padding: 16px;
+        font-size: 1rem;
+    }
+}
+
 
 /* ===== MODERN CHECKBOX FIXED ===== */
 input[type="checkbox"] {
