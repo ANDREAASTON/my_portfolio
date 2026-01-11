@@ -1406,6 +1406,9 @@ hr{
     margin-bottom: 25px;
     font-size: 1.8rem;
 }
+.admin-hero ul{
+    list-style: none;
+}
 
 /* Label + Select wrapper */
 .admin-hero .input-group {
