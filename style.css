@@ -316,7 +316,7 @@ a:focus-visible {
     .nav-links {
         justify-content: center;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 1px;
     }
 
     .nav-links a {
@@ -329,7 +329,7 @@ a:focus-visible {
     }
 
     .nav-links a i {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         opacity: 1;
     }
 }
