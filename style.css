@@ -316,7 +316,7 @@ a:focus-visible {
     .nav-links {
         justify-content: center;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 4px;
     }
 
     .nav-links a {
