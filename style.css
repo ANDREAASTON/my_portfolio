@@ -223,7 +223,9 @@ a:focus-visible {
     white-space: nowrap;
 }
 
-/* ===== NAV LINKS ===== */
+/* ======================================================
+   NAV LINKS
+   ====================================================== */
 .nav-links {
     display: flex;
     align-items: center;
@@ -233,16 +235,18 @@ a:focus-visible {
     padding: 0;
     margin: 0;
 
-    flex-wrap: nowrap;        /* prevent wrapping */
-    white-space: nowrap;      /* safety */
+    flex-wrap: nowrap;          /* NO wrapping */
+    white-space: nowrap;        /* safety */
 }
 
-/* Prevent items from shrinking */
+/* Prevent flex children from shrinking */
 .nav-links li {
     flex-shrink: 0;
 }
 
-/* ===== NAV LINK ===== */
+/* ======================================================
+   NAV LINK
+   ====================================================== */
 .nav-links a {
     display: inline-flex;
     align-items: center;
@@ -266,16 +270,21 @@ a:focus-visible {
         transform 0.15s ease;
 }
 
-/* ===== ICON ===== */
+/* ======================================================
+   ICON
+   ====================================================== */
 .nav-links a i {
-    font-size: 0.95rem;
-    opacity: 0.75;
+    font-size: 1rem;
+    opacity: 0.8;
+
     transition:
         opacity 0.25s ease,
         transform 0.25s ease;
 }
 
-/* ===== HOVER ===== */
+/* ======================================================
+   HOVER
+   ====================================================== */
 .nav-links a:hover {
     background-color: rgba(0, 128, 128, 0.08);
     color: var(--primary-color);
@@ -286,44 +295,12 @@ a:focus-visible {
     transform: translateY(-1px);
 }
 
-/* ===== ACTIVE / CURRENT PAGE (OPTIONAL) ===== */
-.nav-links a.active {
-    background-color: rgba(0, 128, 128, 0.12);
-    color: var(--primary-color);
-}
-
-/* ===== MOBILE OPTIMIZATION ===== */
-@media (max-width: 600px) {
-    .nav-links a {
-        padding: 8px;                 /* tighter touch target */
-    }
-
-    .nav-links a span {
-        display: none;                /* icons only */
-    }
-
-    .nav-links a i {
-        font-size: 1.1rem;            /* icon emphasis */
-        opacity: 0.9;
-    }
-}
-
-/* ===== OPTIONAL SAFETY SCROLL (DISABLED BY DEFAULT) ===== */
-/*
-.nav-links {
-    overflow-x: auto;
-    scrollbar-width: none;
-}
-
-.nav-links::-webkit-scrollbar {
-    display: none;
-}
-*/
-
-/* ACTIVE */
+/* ======================================================
+   ACTIVE
+   ====================================================== */
 .nav-links a.active {
     color: var(--primary-color);
-    background-color: rgba(0, 128, 128, 0.12);
+    background-color: rgba(0, 128, 128, 0.14);
     box-shadow: inset 0 0 0 1px rgba(0, 128, 128, 0.25);
 }
 
@@ -331,7 +308,9 @@ a:focus-visible {
     opacity: 1;
 }
 
-/* ===== HAMBURGER ===== */
+/* ======================================================
+   HAMBURGER
+   ====================================================== */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -345,38 +324,48 @@ a:focus-visible {
 
 .hamburger span {
     display: block;
-    width: 24px;
-    height: 2.6px;
+    width: 22px;
+    height: 2.5px;
 
     background-color: var(--text-color);
     margin: 5px 0;
     border-radius: 12px;
 }
 
-/* ===== MOBILE ===== */
+/* ======================================================
+   MOBILE (ICON-ONLY, SINGLE LINE)
+   ====================================================== */
 @media (max-width: 900px) {
+
     #navbar .container {
         flex-direction: column;
-        gap: 4px;
+        gap: 6px;
     }
 
     .nav-links {
         justify-content: center;
-        flex-wrap: wrap;
-        gap: 1px;
+        gap: 6px;
+
+        flex-wrap: nowrap;      /* FORCE one line */
+        overflow-x: auto;       /* fallback safety */
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
     }
 
     .nav-links a {
-        padding: 8px 10px;
-        font-size: 0.85rem;
+        padding: 8px;
+        border-radius: 10px;
     }
 
     .nav-links a span {
-        display: none; /* icon-only on mobile */
+        display: none;          /* icon-only */
     }
 
     .nav-links a i {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         opacity: 1;
     }
 }
