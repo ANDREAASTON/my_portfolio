@@ -56,14 +56,14 @@ main {
 
 .main-doc {
   max-width: 90%;
-  margin: 5px auto;
+  margin: 10px auto;
 }
 
 
 .main-doc h1 {
   font-size: 2rem;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .main-doc h2 {
