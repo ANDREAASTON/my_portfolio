@@ -423,9 +423,9 @@ a:focus-visible {
 @media (max-width: 900px) {
     .hero {
         grid-template-columns: 1fr;
-        padding-right: 30px;
-        padding-left: 30px;
-        gap: 30px;
+        padding-right: 15px;
+        padding-left: 15px;
+        gap: 15px;
     }
     .hero-text {
         align-items: center;
@@ -573,7 +573,7 @@ a:focus-visible {
 
 @media (max-width: 900px) {
     .projects-admin-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 }
 
