@@ -310,7 +310,7 @@ a:focus-visible {
 @media (max-width: 900px) {
     #navbar .container {
         flex-direction: column;
-        gap: 6px;
+        gap: 4px;
     }
 
     .nav-links {
