@@ -184,64 +184,87 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             list.innerHTML = "";
 
+            // Group by category
+            const grouped = {};
             data.forEach(item => {
                 const catName = item.resume_categories?.name || "Uncategorized";
-                const linkHTML = item.links?.length
-                    ? `<ul>${item.links.map(l => `<li><a href="${l.url}" target="_blank">${l.name}</a></li>`).join("")}</ul>`
-                    : "";
-                const years = item.end_year ? `${item.start_year} - ${item.end_year}` : `${item.start_year} - Present`;
+                if (!grouped[catName]) grouped[catName] = [];
+                grouped[catName].push(item);
+            });
 
-                const row = document.createElement("div");
-                row.className = "form-group";
-                row.innerHTML = `
-                    <strong>${catName}</strong><br>
-                    ${years} — ${item.title}
-                    <p>${item.description || ""}</p>
-                    ${linkHTML}
-                    <div style="margin-top:8px">
-                        <button class="btn btn-small edit">Edit</button>
-                        <button class="btn btn-small danger">Delete</button>
-                    </div>
-                `;
+            Object.entries(grouped).forEach(([categoryName, items]) => {
+                const group = document.createElement("div");
+                group.className = "resume-admin-group";
 
-                // EDIT ITEM
-                row.querySelector(".edit").onclick = () => {
-                    resumeCategory.value = item.category_id || "";
-                    titleInput.value = item.title;
-                    descriptionInput.value = item.description;
-                    startYearInput.value = item.start_year;
-                    endYearInput.value = item.end_year || "";
-                    linksInput.value = item.links?.map(l => `${l.name}|${l.url}`).join("; ") || "";
-                    editingItemId = item.id;
-                    form.querySelector("button").textContent = "Update Item";
-                    statusDiv.textContent = `Editing "${item.title}"...`;
-                    statusDiv.style.color = "#008080";
-                };
+                const heading = document.createElement("h3");
+                heading.textContent = categoryName;
+                group.appendChild(heading);
 
-                // DELETE ITEM
-                row.querySelector(".danger").onclick = () => {
-                    const overlay = createOverlay(`
-                        <div class="delete-card">
-                            <strong>Delete this item?</strong>
-                            <small>${item.title}</small>
-                            <div class="delete-actions" style="margin-top:8px">
-                                <button class="delete-confirm btn btn-small">Yes</button>
-                                <button class="btn btn-small delete-cancel">Cancel</button>
-                            </div>
+                const grid = document.createElement("div");
+                grid.className = "resume-admin-grid";
+
+                items.forEach(item => {
+                    const linkHTML = item.links?.length
+                        ? `<ul>${item.links.map(l => `<li><a href="${l.url}" target="_blank">${l.name}</a></li>`).join("")}</ul>`
+                        : "";
+                    const years = item.end_year ? `${item.start_year} - ${item.end_year}` : `${item.start_year} - Present`;
+
+                    const row = document.createElement("div");
+                    row.className = "resume-admin-row";
+                    row.innerHTML = `
+                        <div class="resume-admin-info">
+                            <div class="resume-admin-title">${years} - ${item.title}</div>
+                            <div class="resume-admin-desc">${item.description || ""}</div>
+                            ${linkHTML}
                         </div>
-                    `);
-                    overlay.querySelector(".delete-cancel").onclick = () => overlay.remove();
-                    overlay.querySelector(".delete-confirm").onclick = async () => {
-                        await supabaseClient.from("resume_items").delete().eq("id", item.id);
-                        overlay.remove();
-                        loadResumeItems();
-                    };
-                };
+                        <div class="resume-admin-actions">
+                            <button class="btn btn-small edit">Edit</button>
+                            <button class="btn btn-small danger">Delete</button>
+                        </div>
+                    `;
 
-                list.appendChild(row);
+                    // EDIT ITEM
+                    row.querySelector(".edit").onclick = () => {
+                        resumeCategory.value = item.category_id || "";
+                        titleInput.value = item.title;
+                        descriptionInput.value = item.description;
+                        startYearInput.value = item.start_year;
+                        endYearInput.value = item.end_year || "";
+                        linksInput.value = item.links?.map(l => `${l.name}|${l.url}`).join("; ") || "";
+                        editingItemId = item.id;
+                        form.querySelector("button").textContent = "Update Item";
+                        statusDiv.textContent = `Editing "${item.title}"...`;
+                        statusDiv.style.color = "#008080";
+                    };
+
+                    // DELETE ITEM
+                    row.querySelector(".danger").onclick = () => {
+                        const overlay = createOverlay(`
+                            <div class="delete-card">
+                                <strong>Delete this item?</strong>
+                                <small>${item.title}</small>
+                                <div class="delete-actions" style="margin-top:8px">
+                                    <button class="delete-confirm btn btn-small">Yes</button>
+                                    <button class="btn btn-small delete-cancel">Cancel</button>
+                                </div>
+                            </div>
+                        `);
+                        overlay.querySelector(".delete-cancel").onclick = () => overlay.remove();
+                        overlay.querySelector(".delete-confirm").onclick = async () => {
+                            await supabaseClient.from("resume_items").delete().eq("id", item.id);
+                            overlay.remove();
+                            loadResumeItems();
+                        };
+                    };
+
+                    grid.appendChild(row);
+                });
+
+                group.appendChild(grid);
+                list.appendChild(group);
             });
         } catch (err) {
-            statusDiv.textContent = `❌ Failed: ${err.message}`;
+            statusDiv.textContent = `Failed: ${err.message}`;
             statusDiv.style.color = "red";
         }
     }
@@ -324,3 +347,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadCategories();
     loadResumeItems();
 });
+

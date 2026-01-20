@@ -1,5 +1,15 @@
 // site.ui.js
 document.addEventListener('DOMContentLoaded', function() {
+    // Auto-update footer year
+    const footerParas = document.querySelectorAll("footer p");
+    if (footerParas.length) {
+        const currentYear = new Date().getFullYear();
+        footerParas.forEach(p => {
+            const text = p.textContent;
+            const updated = text.replace(/\b(19|20)\d{2}\b/, String(currentYear));
+            if (updated !== text) p.textContent = updated;
+        });
+    }
 
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');

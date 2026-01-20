@@ -140,7 +140,11 @@ document.addEventListener("DOMContentLoaded", async () => {
                 masonryContainer.innerHTML = "";
                 galleryImages = [];
 
-                files.forEach(file => {
+                const orderedFiles = files
+                    .filter(file => file.name !== ".keep" && /\.(jpe?g|png|webp)$/i.test(file.name))
+                    .sort((a, b) => b.name.localeCompare(a.name));
+
+                orderedFiles.forEach(file => {
                     if (file.name === ".keep" || !/\.(jpe?g|png|webp)$/i.test(file.name)) return;
 
                     const { data: urlData } = supabaseClient.storage.from("gallery").getPublicUrl(`${project.slug}/${file.name}`);

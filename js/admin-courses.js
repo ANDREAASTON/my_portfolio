@@ -62,66 +62,91 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
             }
 
+            // Group by category
+            const grouped = {};
             data.forEach(course => {
-                const row = document.createElement("div");
-                row.className = "form-group";
-
                 const catName = course.course_categories?.name || "Uncategorized";
+                if (!grouped[catName]) grouped[catName] = [];
+                grouped[catName].push(course);
+            });
 
-                row.innerHTML = `
-                    <strong>${catName}</strong><br>
-                    ${course.course_name}
-                    <div style="margin-top:8px">
+            Object.entries(grouped).forEach(([categoryName, courses]) => {
+                const group = document.createElement("div");
+                group.className = "courses-admin-group";
+
+                const heading = document.createElement("h3");
+                heading.textContent = categoryName;
+                group.appendChild(heading);
+
+                const grid = document.createElement("div");
+                grid.className = "courses-admin-grid";
+
+                courses.forEach(course => {
+                    const row = document.createElement("div");
+                    row.className = "courses-admin-row";
+
+                    const info = document.createElement("div");
+                    info.className = "courses-admin-info";
+                    info.textContent = course.course_name;
+
+                    const actions = document.createElement("div");
+                    actions.className = "courses-admin-actions";
+                    actions.innerHTML = `
                         <button class="btn btn-small edit">Edit</button>
                         <button class="btn btn-small danger">Delete</button>
-                    </div>
-                `;
-
-                // EDIT
-                row.querySelector(".edit").onclick = () => {
-                    courseCategory.value = String(course.category_id);
-                    courseName.value = course.course_name;
-                    editingCourseId = course.id;
-                    form.querySelector("button[type='submit']").textContent = "Update Course";
-                    statusDiv.textContent = `Editing "${course.course_name}"...`;
-                    statusDiv.style.color = "#008080";
-                };
-
-                // DELETE
-                row.querySelector(".danger").onclick = () => {
-                    const overlay = document.createElement("div");
-                    overlay.className = "delete-overlay";
-                    overlay.innerHTML = `
-                        <div class="delete-card">
-                            <strong>Delete this course?</strong>
-                            <small>${course.course_name}</small>
-                            <div class="delete-actions" style="margin-top:8px">
-                                <button class="delete-confirm btn btn-small">Yes</button>
-                                <button class="delete-cancel btn btn-small">Cancel</button>
-                            </div>
-                        </div>
                     `;
-                    document.body.appendChild(overlay);
 
-                    overlay.querySelector(".delete-cancel").onclick = () => overlay.remove();
-                    overlay.querySelector(".delete-confirm").onclick = async () => {
-                        const { error } = await supabaseClient
-                            .from("courses")
-                            .delete()
-                            .eq("id", course.id);
-
-                        if (error) {
-                            alert("Failed to delete course: " + error.message);
-                            overlay.remove();
-                            return;
-                        }
-
-                        overlay.remove();
-                        loadCourses(); // reload filtered courses
+                    // EDIT
+                    actions.querySelector(".edit").onclick = () => {
+                        courseCategory.value = String(course.category_id);
+                        courseName.value = course.course_name;
+                        editingCourseId = course.id;
+                        form.querySelector("button[type='submit']").textContent = "Update Course";
+                        statusDiv.textContent = `Editing "${course.course_name}"...`;
+                        statusDiv.style.color = "#008080";
                     };
-                };
 
-                list.appendChild(row);
+                    // DELETE
+                    actions.querySelector(".danger").onclick = () => {
+                        const overlay = document.createElement("div");
+                        overlay.className = "delete-overlay";
+                        overlay.innerHTML = `
+                            <div class="delete-card">
+                                <strong>Delete this course?</strong>
+                                <small>${course.course_name}</small>
+                                <div class="delete-actions" style="margin-top:8px">
+                                    <button class="delete-confirm btn btn-small">Yes</button>
+                                    <button class="delete-cancel btn btn-small">Cancel</button>
+                                </div>
+                            </div>
+                        `;
+                        document.body.appendChild(overlay);
+
+                        overlay.querySelector(".delete-cancel").onclick = () => overlay.remove();
+                        overlay.querySelector(".delete-confirm").onclick = async () => {
+                            const { error } = await supabaseClient
+                                .from("courses")
+                                .delete()
+                                .eq("id", course.id);
+
+                            if (error) {
+                                alert("Failed to delete course: " + error.message);
+                                overlay.remove();
+                                return;
+                            }
+
+                            overlay.remove();
+                            loadCourses(); // reload filtered courses
+                        };
+                    };
+
+                    row.appendChild(info);
+                    row.appendChild(actions);
+                    grid.appendChild(row);
+                });
+
+                group.appendChild(grid);
+                list.appendChild(group);
             });
         } catch (err) {
             statusDiv.textContent = `❌ Failed to load courses: ${err.message}`;

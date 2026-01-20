@@ -44,10 +44,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             // NEW label (30 days)
             const created = new Date(skill.created_at);
             const daysOld = (Date.now() - created.getTime()) / 86400000;
-            if (daysOld <= 30) {
-                const newTag = document.createElement("small");
-                newTag.textContent = " NEW";
-                newTag.style.color = "var(--accent)";
+            if (daysOld <= 10) {
+                const newTag = document.createElement("span");
+                newTag.className = "skill-tag";
+                newTag.textContent = "NEW";
                 label.appendChild(newTag);
             }
 

@@ -184,51 +184,79 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         list.innerHTML = "";
 
+        // Group by category
+        const grouped = {};
         data.forEach(skill => {
-            const row = document.createElement("div");
-            row.className = "form-group";
+            const catName = skill.skill_categories?.name || "Uncategorized";
+            if (!grouped[catName]) grouped[catName] = [];
+            grouped[catName].push(skill);
+        });
 
-            row.innerHTML = `
-                <strong>${skill.skill_categories?.name || "Uncategorized"}</strong><br>
-                ${skill.skill_name} — ${skill.proficiency}%
-                <div style="margin-top:8px">
+        Object.entries(grouped).forEach(([categoryName, skills]) => {
+            const group = document.createElement("div");
+            group.className = "skills-admin-group";
+
+            const heading = document.createElement("h3");
+            heading.textContent = categoryName;
+            group.appendChild(heading);
+
+            const grid = document.createElement("div");
+            grid.className = "skills-admin-grid";
+
+            skills.forEach(skill => {
+                const row = document.createElement("div");
+                row.className = "skills-admin-row";
+
+                const info = document.createElement("div");
+                info.className = "skills-admin-info";
+                info.textContent = `${skill.skill_name} - ${skill.proficiency}%`;
+
+                const actions = document.createElement("div");
+                actions.className = "skills-admin-actions";
+                actions.innerHTML = `
                     <button class="btn btn-small edit">Edit</button>
                     <button class="btn btn-small danger">Delete</button>
-                </div>
-            `;
+                `;
 
-            // EDIT SKILL
-            row.querySelector(".edit").onclick = () => {
-                skillCategory.value = skill.category_id;
-                skillName.value = skill.skill_name;
-                skillProficiency.value = skill.proficiency;
-                editingSkillId = skill.id;
-                form.querySelector("button").textContent = "Update Skill";
-            };
-
-            // DELETE SKILL
-            row.querySelector(".danger").onclick = () => {
-                const overlay = createOverlay(`
-                    <div class="delete-card">
-                        <strong>Delete skill?</strong>
-                        <small>${skill.skill_name}</small>
-                        <div class="delete-actions" style="margin-top:10px">
-                            <button class="delete-confirm btn btn-small">Yes</button>
-                            <button class="delete-cancel btn btn-small">Cancel</button>
-                        </div>
-                    </div>
-                `);
-
-                overlay.querySelector(".delete-cancel").onclick = () => overlay.remove();
-                overlay.querySelector(".delete-confirm").onclick = async () => {
-                    await supabaseClient.from("skills").delete().eq("id", skill.id);
-                    overlay.remove();
-                    loadSkills();
+                // EDIT SKILL
+                actions.querySelector(".edit").onclick = () => {
+                    skillCategory.value = skill.category_id;
+                    skillName.value = skill.skill_name;
+                    skillProficiency.value = skill.proficiency;
+                    editingSkillId = skill.id;
+                    form.querySelector("button").textContent = "Update Skill";
                 };
-            };
 
-            list.appendChild(row);
+                // DELETE SKILL
+                actions.querySelector(".danger").onclick = () => {
+                    const overlay = createOverlay(`
+                        <div class="delete-card">
+                            <strong>Delete skill?</strong>
+                            <small>${skill.skill_name}</small>
+                            <div class="delete-actions" style="margin-top:10px">
+                                <button class="delete-confirm btn btn-small">Yes</button>
+                                <button class="delete-cancel btn btn-small">Cancel</button>
+                            </div>
+                        </div>
+                    `);
+
+                    overlay.querySelector(".delete-cancel").onclick = () => overlay.remove();
+                    overlay.querySelector(".delete-confirm").onclick = async () => {
+                        await supabaseClient.from("skills").delete().eq("id", skill.id);
+                        overlay.remove();
+                        loadSkills();
+                    };
+                };
+
+                row.appendChild(info);
+                row.appendChild(actions);
+                grid.appendChild(row);
+            });
+
+            group.appendChild(grid);
+            list.appendChild(group);
         });
+
     }
 
     /* ===============================
@@ -292,3 +320,4 @@ document.addEventListener("DOMContentLoaded", async () => {
     await loadCategories();
     loadSkills();
 });
+
