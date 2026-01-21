@@ -225,6 +225,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     skillProficiency.value = skill.proficiency;
                     editingSkillId = skill.id;
                     form.querySelector("button").textContent = "Update Skill";
+                    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                    window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                 };
 
                 // DELETE SKILL
@@ -244,6 +246,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     overlay.querySelector(".delete-confirm").onclick = async () => {
                         await supabaseClient.from("skills").delete().eq("id", skill.id);
                         overlay.remove();
+                        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                         loadSkills();
                     };
                 };

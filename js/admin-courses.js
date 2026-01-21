@@ -104,6 +104,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         form.querySelector("button[type='submit']").textContent = "Update Course";
                         statusDiv.textContent = `Editing "${course.course_name}"...`;
                         statusDiv.style.color = "#008080";
+                        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                     };
 
                     // DELETE
@@ -136,6 +138,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                             }
 
                             overlay.remove();
+                            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                            window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                             loadCourses(); // reload filtered courses
                         };
                     };

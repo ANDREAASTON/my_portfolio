@@ -235,6 +235,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         form.querySelector("button").textContent = "Update Item";
                         statusDiv.textContent = `Editing "${item.title}"...`;
                         statusDiv.style.color = "#008080";
+                        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                        window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                     };
 
                     // DELETE ITEM
@@ -253,6 +255,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                         overlay.querySelector(".delete-confirm").onclick = async () => {
                             await supabaseClient.from("resume_items").delete().eq("id", item.id);
                             overlay.remove();
+                            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                            window.scrollTo({ top: 0, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
                             loadResumeItems();
                         };
                     };
