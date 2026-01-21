@@ -1103,7 +1103,7 @@ a:focus-visible {
         flex-wrap: wrap;
         overflow-x: visible;
         scrollbar-width: none;
-        gap: 6px;
+        gap: 12px;
         padding: 0 12px 4px;
     }
     .admin-actions::-webkit-scrollbar {
@@ -1739,6 +1739,12 @@ hr{
     margin-top: 50px;
 }
 
+#slugPreview {
+    margin-top: 2px;
+    margin-bottom: 18px;
+    color: #4b5563;
+}
+
 @media (max-width: 900px) {
     .masonry {
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -2099,32 +2105,28 @@ hr{
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(
-        145deg,
-        var(--primary-color),
-        #009999
-    );
-    color: var(--white);
-
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 50%;
-
-    font-size: 1.15rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    font-size: 1.1rem;
     cursor: pointer;
-
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    overflow: hidden;
+    position: fixed;
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.18),
-        inset 0 0 0 rgba(255, 255, 255, 0);
-
+        0 12px 28px rgba(0, 0, 0, 0.12),
+        0 4px 10px rgba(0, 0, 0, 0.08);
     opacity: 0;
     visibility: hidden;
-
     transition:
         opacity 0.25s ease,
         transform 0.25s ease,
         box-shadow 0.25s ease,
-        background 0.25s ease;
-
+        background 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
     z-index: 999;
 }
 
@@ -2137,16 +2139,15 @@ hr{
 
 /* HOVER INTERACTION */
 .scroll-top:hover {
-    background: linear-gradient(
-        145deg,
-        #007f7f,
-        #00a0a0
-    );
-    transform: translateY(-6px);
+    background: rgba(0, 128, 128, 0.1);
+    border-color: rgba(0, 128, 128, 0.35);
+    color: #006b6b;
+    transform: translateY(-5px) scale(1.02);
     box-shadow:
-        0 14px 30px rgba(0, 0, 0, 0.22),
-        inset 0 1px 2px rgba(255, 255, 255, 0.25);
+        0 16px 32px rgba(0, 0, 0, 0.16),
+        0 6px 14px rgba(0, 0, 0, 0.12);
 }
+
 
 /* ACCESSIBILITY */
 .scroll-top:focus-visible {

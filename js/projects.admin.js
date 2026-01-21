@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // CREATE PROJECT PAGE
     // ===============================
     if (createForm && isAuthenticated) {
-        const titleInput = document.getElementById("projectTitle");
+        const titleInput = document.getElementById("projectTitleInput");
         const slugPreview = document.getElementById("slugPreview");
         const shortDescInput = document.getElementById("shortDescription");
         const fullDescInput = document.getElementById("fullDescription");

@@ -72,13 +72,16 @@
         <section class="admin-hero">
             <h1>Create New Project</h1>
             <p>
-                <a href="admin-projects.html" class="btn btn-small btn-outline">← Back to Projects</a>
+                <a href="admin-projects.html" class="btn btn-small btn-outline">
+                    <i class="fa-solid fa-arrow-left btn-icon"></i>
+                    Back to Projects
+                </a>
             </p>
             
             <form class="contact-container" id="createProjectForm">
                 <div class="form-group">
-                    <label for="projectTitle">Project Title</label>
-                    <input type="text" id="projectTitle" placeholder="e.g., FGC Project" required>
+                    <label for="projectTitleInput">Project Title</label>
+                    <input type="text" id="projectTitleInput" placeholder="e.g., FGC Project" required>
                 </div>
 
                 <div class="form-group">
@@ -98,7 +101,10 @@
                     <textarea id="fullDescription" placeholder="Complete project documentation (supports markdown-style formatting)" rows="8" required></textarea>
                 </div>
                 
-                <button class="contact-btn" type="submit">Create Project</button>
+                <button class="btn btn-small btn-outline" type="submit">
+                    <i class="fa-solid fa-plus btn-icon"></i>
+                    Create Project
+                </button>
                 <div id="createStatus"></div>
             </form>
         </section>
