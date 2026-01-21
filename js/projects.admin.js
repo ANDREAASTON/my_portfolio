@@ -669,8 +669,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                     img.className = "cover-item";
 
                     const btn = document.createElement("button");
-                    btn.textContent = "Set as Cover";
-                    btn.className = "btn btn-small";
+                    btn.innerHTML = '<i class="fa-solid fa-image btn-icon"></i>Set as Cover';
+                    btn.className = "btn btn-small btn-outline cover-btn";
                     btn.addEventListener("click", async () => {
                         coverStatus.textContent = "Updating cover image...";
                         coverStatus.style.color = "#008080";
