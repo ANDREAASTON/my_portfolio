@@ -16,6 +16,17 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
 
 body {
     display: flex;
@@ -45,6 +56,10 @@ main {
     flex: 1;
     margin-top: 100px;
     padding-bottom: 40px;
+}
+
+section {
+    scroll-margin-top: 120px;
 }
 
 
@@ -147,7 +162,7 @@ main {
 }
 
 #projectDescription {
-    max-width: 900px;
+    max-width: 1100px;
     margin: 0 auto 30px;
     padding: 22px 24px;
     background: rgba(255, 255, 255, 0.7);
@@ -296,6 +311,10 @@ main {
     padding: 7px 14px;
     font-size: 0.85rem;
     border-radius: 8px;
+}
+
+.btn .btn-icon {
+    margin-right: 6px;
 }
 
 /* Secondary / neutral buttons (optional) */
@@ -963,6 +982,25 @@ a:focus-visible {
     }
 }
 
+@media (max-width: 600px) {
+    .projects-admin-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .projects-admin-grid .project-actions {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .projects-admin-grid .project-actions .btn {
+        flex: 0 1 auto;
+        max-width: 140px;
+        min-width: 0;
+        padding: 6px 8px;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+}
+
 /* Reuse your existing button system */
 
 .btn-primary {
@@ -1035,6 +1073,58 @@ a:focus-visible {
     align-items: center;       
 }
 
+.admin-actions .btn {
+    flex: 0 1 auto;
+    max-width: 200px;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.admin-actions .btn i {
+    margin-right: 6px;
+}
+
+@media (max-width: 700px) {
+    .admin-actions {
+        gap: 8px;
+    }
+    .admin-actions .btn {
+        flex: 0 1 150px;
+        max-width: 170px;
+        padding: 7px 10px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-actions {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        scrollbar-width: none;
+        gap: 6px;
+        padding: 0 12px 4px;
+    }
+    .admin-actions::-webkit-scrollbar {
+        display: none;
+    }
+    .admin-actions .btn {
+        flex: 0 0 auto;
+        max-width: none;
+        padding: 7px 8px;
+        font-size: 0.72rem;
+        white-space: nowrap;
+    }
+    .admin-actions .btn .btn-text {
+        display: none;
+    }
+    .admin-actions .btn i {
+        margin-right: 0;
+        font-size: 0.95rem;
+    }
+}
+
 /* ===== ADMIN SKILLS (Two-column groups) ===== */
 .skills-admin-group {
     margin-top: 18px;
@@ -1052,20 +1142,41 @@ a:focus-visible {
 
 .skills-admin-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
     gap: 12px;
+    justify-items: center;
 }
 
 .skills-admin-row {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 10px;
     padding: 10px 12px;
     border-radius: 10px;
     background: var(--white);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
     text-align: left;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* Center the lone last card when the row is incomplete */
+.skills-admin-grid > .skills-admin-row:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 360px;
+}
+
+@media (max-width: 700px) {
+    .skills-admin-grid {
+        grid-template-columns: 1fr;
+    }
+    .skills-admin-grid > .skills-admin-row:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: 420px;
+    }
 }
 
 .skills-admin-info {
@@ -1076,7 +1187,9 @@ a:focus-visible {
 .skills-admin-actions {
     display: flex;
     gap: 6px;
-    justify-content: flex-end;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
 }
 
 @media (max-width: 700px) {
@@ -1098,19 +1211,23 @@ a:focus-visible {
 
 .resume-admin-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
     gap: 12px;
+    justify-items: center;
 }
 
 .resume-admin-row {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 12px;
     padding: 12px;
     border-radius: 10px;
     background: var(--white);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 420px;
 }
 
 .resume-admin-info {
@@ -1130,12 +1247,28 @@ a:focus-visible {
 .resume-admin-actions {
     display: flex;
     gap: 6px;
-    flex-shrink: 0;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
 }
 
 @media (max-width: 800px) {
     .resume-admin-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Center the lone last card when the row is incomplete */
+.resume-admin-grid > .resume-admin-row:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 360px;
+}
+
+@media (max-width: 800px) {
+    .resume-admin-grid > .resume-admin-row:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: 420px;
     }
 }
 
@@ -1152,19 +1285,23 @@ a:focus-visible {
 
 .courses-admin-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
     gap: 12px;
+    justify-items: center;
 }
 
 .courses-admin-row {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 10px;
     padding: 10px 12px;
     border-radius: 10px;
     background: var(--white);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    width: 100%;
+    max-width: 420px;
 }
 
 .courses-admin-info {
@@ -1175,12 +1312,28 @@ a:focus-visible {
 .courses-admin-actions {
     display: flex;
     gap: 6px;
-    flex-shrink: 0;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
 }
 
 @media (max-width: 700px) {
     .courses-admin-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Center the lone last card when the row is incomplete */
+.courses-admin-grid > .courses-admin-row:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    max-width: 360px;
+}
+
+@media (max-width: 700px) {
+    .courses-admin-grid > .courses-admin-row:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: 420px;
     }
 }
 
